@@ -33,6 +33,60 @@ app.use( session( {
     app.set( 'db', db )
 } ).catch(console.log)
 
+
+app.get('/api/tent', ( req, res ) => {
+    const db = req.app.get('db')
+    db.get_all_tents( ).then( response => {
+        res.send(response)
+    } )
+} )
+
+app.get( '/api/tent/:id', ( req, res ) => {
+    const db = req.app.get('db')
+    const id = req.params.id
+    db.get_tent([id]).then( response => {
+
+        res.send(response)
+} )})
+
+// app.get SleepyBag db_get_backpacks
+
+
+// app.get Backpack db_get_shoes
+
+
+// app.get shoes db_get_sleeping_bags
+
+
+
+// cart
+
+// app.delete('/api/delete/item', function(req, res) {
+//     let index = item.indexOf(req.params.item)
+//     city.splice(index, 1)
+//     res.status(200).send(item)
+//  })
+
+//  app.put('/api/update/', function(req, res) {
+//     // console.log()
+    
+//     res.status(200).send()
+// })
+
+// app.post('/api/create', function(req, res) {
+   
+//    res.send(city).status(200) 
+// } )
+
+
+// app.get('/api/read', function(req, res) {
+    
+    
+//     res.status(200).send()
+//  })
+
+
+
 passport.use( new Auth0Strategy( { 
     domain: DOMAIN,
     clientID: CLIENT_ID,
@@ -44,7 +98,7 @@ passport.use( new Auth0Strategy( {
       const db = app.get( 'db' )
 
       const { sub, given_name, family_name } = profile._json
-      console.log(profile._json)
+    //   console.log(profile._json)
 
       db.get_user( [ sub ] ).then( response => {
           if ( response[ 0 ] ) {
@@ -71,7 +125,7 @@ passport.use( new Auth0Strategy( {
 
     app.get( '/auth', passport.authenticate( 'auth0' ) )
     app.get( '/auth/callback', passport.authenticate( 'auth0', {
-        successRedirect: 'http://localhost:3000#/'
+        successRedirect: 'http://localhost:3000#/cart'
     } ) )
 
     app.get( '/auth/me', ( req, res ) => { 
@@ -84,7 +138,7 @@ passport.use( new Auth0Strategy( {
 
      app.get( '/logout', ( req, res ) => {
          req.logOut( );
-         res.redirect( 'http://localhost:3000/#/')
+         res.redirect( 'http://localhost:3000/#/home')
      } )
 
 

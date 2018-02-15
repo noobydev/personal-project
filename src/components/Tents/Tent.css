@@ -1,0 +1,25 @@
+.product-container {
+    min-height: 309px;
+    background: #fff;
+    box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.2);
+    float: left;
+    list-style: none;
+    margin: 1% 1% 0 0;
+    overflow: hidden;
+    padding: 10px 15px 10px;
+    position: relative;
+    width: 24.25%;
+}
+
+/* li {
+    height: 100px;
+    width: 100px;
+    background: grey;
+} */
+
+
+.btn {
+    height: 100px;
+    width: 100px;
+    background: grey;
+}
