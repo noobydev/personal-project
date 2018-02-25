@@ -15,16 +15,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <HashRouter>
+        <HashRouter>
           <Switch>
-            <Route exact path='/' component={ Home } />
-            <Route  exact path='/tents' component={ Tent } />
-            <Route path='/tent/:id' component={ TentDetails } />
-            <Route path='/sleepybags' component={ SleepyBag } />
-            <Route path='/backpacks' component={ Backpack } />
+            <Route exact path='/' component={Home} />
+            <Route exact path='/tents' component={Tent} />
+            <Route path='/tent/:id' component={TentDetails} />
+            <Route path='/sleepybags' component={SleepyBag} />
+            <Route path='/backpacks' component={Backpack} />
             {/* <Route path='/backpacks' component={ NotificationContainer } /> */}
-            <Route path='/shoes' component={ Shoes } />
-            <Route path='/cart' component={ Cart } />
+            <Route path='/shoes' component={Shoes} />
+            <Route path='/cart' component={Cart} />
           </Switch>
         </HashRouter>
       </div>

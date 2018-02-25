@@ -1,0 +1,40 @@
+.btns {
+  color: rgb(5, 5, 5);
+  background: rgb(173, 50, 50);
+  background-color: rgb(255, 255, 255);
+  width: 150px;
+  font-size: 17px;
+ border: none;
+}
+
+.App {
+    height: 40px;
+    background-color: grey;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change background on mouse-over */
+.navbar a:hover {
+    background: rgb(112, 103, 103);
+    color: black;
+}
+
+/* Main content */
+.main {
+    margin-top: 30px; /* Add a top margin to avoid content overlay */
+}
+
+body { 
+    background-image: 'http://www.fueld.com/wp-content/uploads/2014/07/Cool-Camping-Florence-Vintage-Caravan.jpg'
+}
