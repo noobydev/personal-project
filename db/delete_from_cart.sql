@@ -1,2 +1,2 @@
 delete from cart
-where id = $1;
+where cart_item_id = $1;

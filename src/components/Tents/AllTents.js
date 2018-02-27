@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import "./Tent.css";
 import { getTent } from "../../ducks/reducer";
 import { Link } from "react-router-dom";
+import Navbar from '../Navbar/Navbar'
 
 class Tent extends Component {
   componentDidMount() {
@@ -26,11 +27,12 @@ class Tent extends Component {
     });
     // console.log(this.props.tent)
     return (
-      <div className="App">
+      <div className="AllTents">
+        <Navbar />
         {/* <img src={} alt=""/> */}
-        <a>
+        {/* <a>
           <button>tents page</button>
-        </a>
+        </a> */}
         {tentsToDisplay}
       </div>
     );

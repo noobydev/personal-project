@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
-import StripeCheckout from 'react-stripe-checkout';
-
+import StripeCheckout from "react-stripe-checkout";
+import { deleteItems } from "../../ducks/reducer";
+import { connect } from "react-redux";
+import { Link } from 'react-router-dom'
 const stripePublicKey = process.env.REACT_APP_STRIPE_PUBLIC_KEY;
 
-export default class Backpack extends Component {
+class Cart extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,15 +14,14 @@ export default class Backpack extends Component {
     };
   }
 
-  
-
   onToken = token => {
-    console.log('token', token);
+    console.log("token", token);
     token.card = void 0;
     const amount = 999;
-    axios.post('/api/payment', {token, amount})
-    .then(response => { console.log('payment response', response) });
-  }
+    axios.post("/api/payment", { token, amount }).then(response => {
+      console.log("payment response", response);
+    });
+  };
 
   componentDidMount() {
     axios
@@ -32,31 +33,44 @@ export default class Backpack extends Component {
       .catch(console.log);
   }
 
-  deleteItem() {
-      axios.delete('/api/cart/:id',)
-  }
+  // deleteItem() {
+  //     axios.delete('/api/cart/:id',)
+  // }
 
   render() {
     const displayItems = this.state.cartItems.map((c, i) => {
+      console.log(c);
       return (
         <div key={i}>
           {c.product_name}
+
           <img src={c.img} alt="" />
+          {/* {c.cart_item_id} */}
+          <button onClick={() => this.props.deleteItems(c.cart_item_id)}>delete</button>
         </div>
       );
     });
     return (
       <div className="App">
         {displayItems}
-        <a>
-          <button>cart page</button>
-        </a>
-        <header> <StripeCheckout
-          token={this.onToken}
-          stripeKey={process.env.REACT_APP_STRIPE_PUBLIC_KEY}
-          amount={999} />
-          </header>
+        <Link  to={`/tents`}>
+                <a><button className='btns'>Tents</button></a>
+                </Link>
+        <header>
+          {" "}
+          <StripeCheckout
+            token={this.onToken}
+            stripeKey={process.env.REACT_APP_STRIPE_PUBLIC_KEY}
+            amount={this.state.amount}
+          />
+        </header>
       </div>
     );
   }
 }
+
+function mapStateToProps(state) {
+  return state;
+}
+
+export default connect(mapStateToProps, { deleteItems })(Cart);

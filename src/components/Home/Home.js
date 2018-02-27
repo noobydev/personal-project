@@ -1,19 +1,63 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
-import './Home.css'
-
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import "./Home.css";
+import Navbar from "../Navbar/Navbar";
+import Slider from "react-slick";
+import camping1 from "../../images/camping1.jpg";
+import 'slick-carousel/slick/slick-theme.css'
+import 'slick-carousel/slick/slick.css'
 // import './Home.css';
 
 export default class Home extends Component {
-    render() {
-        return (
-            <div className='App'>
-                <body>
-                    
-                </body> 
-                {/* <img src={} alt=""/> */}
-                <Link  to={`/tents`}>
-                <a href='http://localhost:3030/auth'><button className='btns'>Tents</button></a>
+  render() {
+    var settings = {
+      dots: true,
+    //   infinite: true,
+    //   speed: 500,
+    //   slidesToShow: 1,
+    //   slidesToScroll: 1
+    };
+    return (
+      <div className="Apper">
+        <Navbar />
+
+      {/* <Slider {...settings}>
+          <div>
+            <img src="http://placekitten.com/g/400/200" />
+          </div>
+          <div>
+            <img src="http://placekitten.com/g/400/200" />
+          </div>
+          <div>
+            <img src="http://placekitten.com/g/400/200" />
+          </div>
+          <div>
+            <img src="http://placekitten.com/g/400/200" />
+          </div>
+        </Slider> */}
+
+        
+        
+        <img src="camping1.jpg" alt="" />
+
+        <Slider {...settings}>
+          <div>
+            <img src={camping1} alt="" />
+          </div>
+          <div>
+            <img
+              src="http://jaguarccc.co.uk/wp-content/uploads/2016/12/about.jpg"
+              alt=""
+            />
+          </div>
+            <div><h3>4</h3></div>
+            <div><h3>5</h3></div>
+            <div><h3>6</h3></div>
+        </Slider>
+        {/* <img src={} alt=""/>
+                
+                {/* <Link  to={`/tents`}>
+                <a><button className='btns'>Tents</button></a>
                 </Link>
                 <Link to={'/sleepybags'}>
                 <a href='http://localhost:3030/auth'><button className='btns'>Sleeping Bags</button></a>
@@ -26,33 +70,8 @@ export default class Home extends Component {
                 </Link>
                 <Link to={'/cart'}>
                 <a href='http://localhost:3030/auth'><button className='btns'>Cart</button></a>
-                </Link>
-
-
-
-                {/* <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <a class="navbar-brand" href="#">Navbar</a>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
-    </ul>
-  </div>
-</nav> */}
-            </div> 
-        )
-    }
+                </Link> */}
+      </div>
+    );
+  }
 }

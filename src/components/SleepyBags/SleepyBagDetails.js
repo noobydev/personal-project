@@ -1,26 +1,23 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import "./Tent.css";
-import { getTent } from "../../ducks/reducer";
+import { getSleepingBag } from "../../ducks/reducer";
 import axios from "axios";
-import Navbar from '../Navbar/Navbar'
 
-
-class TentDetails extends Component {
+class SleepyBagDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tent: {},
+      sleeping_bag: {},
       toggle: false
     };
   }
 
   componentWillMount() {
     axios
-      .get(`/api/tent/${this.props.match.params.id}`)
+      .get(`/api/sleepybag/${this.props.match.params.id}`)
       .then(response => {
         console.log(response);
-        this.setState({ tent: response.data[0] });
+        this.setState({ sleeping_bag: response.data[0] });
       })
       .catch(console.log);
   }
@@ -34,25 +31,20 @@ class TentDetails extends Component {
   render() {
     return (
       <div>
-        <Navbar />
         <a>
-          <img src={this.state.tent.img_4} alt="" />
+          <img src={this.state.sleeping_bag.img_4} alt="" />
         </a>
         <a>
-          <img src={this.state.tent.img_3} alt="" />
+          <img src={this.state.sleeping_bag.img_3} alt="" />
         </a>
         <a>
-          <img src={this.state.tent.img_2} alt="" />
+          <img src={this.state.sleeping_bag.img_2} alt="" />
         </a>
-        {/* <a>
-                <img src={this.state.tent.img} />
-                </a> */}
         {this.state.toggle ? (
           <a href="http://localhost:3030/auth">
             <button>Login</button>
           </a>
         ) : null}
-        
         <a>
           <button
             className="btn"
@@ -72,4 +64,4 @@ function mapStateToProps(state) {
   return state;
 }
 
-export default connect(mapStateToProps, { getTent })(TentDetails);
+export default connect(mapStateToProps, { getSleepingBag })(SleepyBagDetails);

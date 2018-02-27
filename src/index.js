@@ -11,7 +11,7 @@ import App from './App';
 import { unregister } from './registerServiceWorker';
 import store from './store';
 import { Provider } from 'react-redux';
-import Bootstrap from 'bootstrap/dist/css/bootstrap.css'
+// import Bootstrap from 'bootstrap/dist/css/bootstrap.css'
 // import Popup from 'react-popup';
 
 

@@ -101,6 +101,21 @@ app.get("/api/tent/:id", (req, res) => {
   });
 });
 
+app.get('/api/sleepybag', (req, res) => {
+  const db = req.app.get('db');
+  db.get_all_sleeping_bags().then( response => {
+    res.send(response);
+  })
+})
+
+app.get('/api/sleepybag/:id', (req, res) => {
+  const db = req.app.get('db');
+  const id = req.params.id;
+  db.get_tent([id]).then( response => {
+    res.send(response)
+  })
+})
+
 // app.get SleepyBag db_get_backpacks
 
 // app.get Backpack db_get_shoes
@@ -114,22 +129,23 @@ app.post("/api/layaway", function(req, res) {
   let { itemId } = req.body;
   req.session.layaway = itemId;
   //   console.log("fdsa");
-  console.log(req.sessionID);
-  console.log(req.session);
+  // console.log(req.sessionID);
+  // console.log(req.session);
   res.sendStatus(200);
 });
 
 // get layaway
 app.get("/api/cart", function(req, res) {
   let db = req.app.get("db");
-  console.log(req.sessionID);
-  console.log(req.session);
+  // console.log(req.sessionID);
+  // console.log(req.session);
   if (req.session.layaway) {
+    console.log('hello', req.user.id)
     db
-      .add_to_cart(req.user.id, req.session.layaway, 1)
+      .add_to_cart(req.session.layaway, req.user.id, 1)
       .then(resp => {
         req.session.layaway = null;
-        console.log(resp);
+        // console.log(resp);
         db
           .get_user_cart(req.user.id)
           .then(resp => {
@@ -168,6 +184,8 @@ app.get("/api/cart", function(req, res) {
 app.delete("/api/delete/:id", function(req, res) {
   let db = req.app.get("db");
   const id = req.params.id;
+  //id = ':id'
+  //id = 7 
   db.delete_from_cart([id]).then(response => {
       res.send(response);
     }).catch(console.log);
@@ -218,6 +236,8 @@ passport.deserializeUser((id, done) => {
   db
     .find_logged_in_user([id])
     .then(res => {
+      console.log('deserializedID',id)
+      console.log('deserializedUser',res[0])
       done(null, res[0]);
     })
     .catch(console.log);
