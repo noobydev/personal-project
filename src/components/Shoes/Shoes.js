@@ -8,7 +8,6 @@ export default class Shoes extends Component {
             <div className='App'>  
                 <Navbar />
                 {/* <img src={} alt=""/> */}
-                <a><button>shoes page</button></a>
             </div> 
         )
     }

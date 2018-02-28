@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getSleepingBag } from "../../ducks/reducer";
 import axios from "axios";
-
+import Navbar from '../Navbar/Navbar'
 class SleepyBagDetails extends Component {
   constructor(props) {
     super(props);
@@ -15,8 +15,10 @@ class SleepyBagDetails extends Component {
   componentWillMount() {
     axios
       .get(`/api/sleepybag/${this.props.match.params.id}`)
+      console.log(this.props.params.match)
       .then(response => {
         console.log(response);
+        console.log('hits');
         this.setState({ sleeping_bag: response.data[0] });
       })
       .catch(console.log);
@@ -31,6 +33,7 @@ class SleepyBagDetails extends Component {
   render() {
     return (
       <div>
+        <Navbar />
         <a>
           <img src={this.state.sleeping_bag.img_4} alt="" />
         </a>

@@ -94,6 +94,7 @@ app.get("/api/tent", (req, res) => {
 });
 
 app.get("/api/tent/:id", (req, res) => {
+  console.log('hitasdf')
   const db = req.app.get("db");
   const id = req.params.id;
   db.get_tent([id]).then(response => {
@@ -109,6 +110,7 @@ app.get('/api/sleepybag', (req, res) => {
 })
 
 app.get('/api/sleepybag/:id', (req, res) => {
+  console.log('hit')
   const db = req.app.get('db');
   const id = req.params.id;
   db.get_tent([id]).then( response => {
@@ -137,7 +139,7 @@ app.post("/api/layaway", function(req, res) {
 // get layaway
 app.get("/api/cart", function(req, res) {
   let db = req.app.get("db");
-  // console.log(req.sessionID);
+  // console.log(req.user.id);
   // console.log(req.session);
   if (req.session.layaway) {
     console.log('hello', req.user.id)
@@ -157,8 +159,8 @@ app.get("/api/cart", function(req, res) {
       .catch(console.log);
   } else {
     db
-      .get_user_cart(resp => {
-        res.status(200).send(resp);
+      .get_user_cart( req.user.id ).then( resp => {
+        res.send(resp)
       })
       .catch(console.log);
   }

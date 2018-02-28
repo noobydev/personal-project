@@ -4,6 +4,10 @@ import "./Tent.css";
 import { getTent } from "../../ducks/reducer";
 import axios from "axios";
 import Navbar from '../Navbar/Navbar'
+import 'slick-carousel/slick/slick-theme.css'
+import 'slick-carousel/slick/slick.css'
+import Slider from "react-slick";
+
 
 
 class TentDetails extends Component {
@@ -32,18 +36,32 @@ class TentDetails extends Component {
   }
 
   render() {
+    var settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      fade: true,
+      pauseOnHover: false
+    };
     return (
-      <div>
+      <div className = 'SimpleSlider'>
         <Navbar />
+        <Slider>
+
         <a>
-          <img src={this.state.tent.img_4} alt="" />
+          <img className = 'imrg' src={this.state.tent.img_4} alt="" />
         </a>
         <a>
-          <img src={this.state.tent.img_3} alt="" />
+          <img className = 'imrg' src={this.state.tent.img_3} alt="" />
         </a>
         <a>
-          <img src={this.state.tent.img_2} alt="" />
+          <img className = 'imrg' src={this.state.tent.img_2} alt="" />
         </a>
+        </Slider>
+        {this.state.tent.product_name}
+        <div>{this.state.tent.description}</div>
         {/* <a>
                 <img src={this.state.tent.img} />
                 </a> */}

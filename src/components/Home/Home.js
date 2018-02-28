@@ -4,6 +4,8 @@ import "./Home.css";
 import Navbar from "../Navbar/Navbar";
 import Slider from "react-slick";
 import camping1 from "../../images/camping1.jpg";
+import camping2 from "../../images/camping2.jpg";
+import camping3 from "../../images/camping3.jpg";
 import 'slick-carousel/slick/slick-theme.css'
 import 'slick-carousel/slick/slick.css'
 // import './Home.css';
@@ -12,65 +14,34 @@ export default class Home extends Component {
   render() {
     var settings = {
       dots: true,
-    //   infinite: true,
-    //   speed: 500,
-    //   slidesToShow: 1,
-    //   slidesToScroll: 1
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 2000,
+      fade: true,
+      pauseOnHover: false
     };
+
+    let images = [camping1, camping2, camping3]
+
     return (
-      <div className="Apper">
-        <Navbar />
-
-      {/* <Slider {...settings}>
-          <div>
-            <img src="http://placekitten.com/g/400/200" />
-          </div>
-          <div>
-            <img src="http://placekitten.com/g/400/200" />
-          </div>
-          <div>
-            <img src="http://placekitten.com/g/400/200" />
-          </div>
-          <div>
-            <img src="http://placekitten.com/g/400/200" />
-          </div>
-        </Slider> */}
-
-        
-        
-        <img src="camping1.jpg" alt="" />
-
+      <div className="SimpleSlider">
+          <Navbar />
         <Slider {...settings}>
-          <div>
-            <img src={camping1} alt="" />
-          </div>
-          <div>
-            <img
-              src="http://jaguarccc.co.uk/wp-content/uploads/2016/12/about.jpg"
-              alt=""
-            />
-          </div>
-            <div><h3>4</h3></div>
-            <div><h3>5</h3></div>
-            <div><h3>6</h3></div>
+          {images.map(img => (
+            <div className="imrg" style={{ backgroundImage: `url(${img})` }}>
+              {/* <h2>TEXT</h2> */}
+            </div>
+          ))}
         </Slider>
-        {/* <img src={} alt=""/>
-                
-                {/* <Link  to={`/tents`}>
-                <a><button className='btns'>Tents</button></a>
-                </Link>
-                <Link to={'/sleepybags'}>
-                <a href='http://localhost:3030/auth'><button className='btns'>Sleeping Bags</button></a>
-                </Link>
-                <Link to={'/backpacks'}>
-                <a href='http://localhost:3030/auth'><button className='btns'>Backpacks</button></a>
-                </Link>
-                <Link to={'/shoes'}>
-                <a href='http://localhost:3030/auth'><button className='btns'>Shoes</button></a>
-                </Link>
-                <Link to={'/cart'}>
-                <a href='http://localhost:3030/auth'><button className='btns'>Cart</button></a>
-                </Link> */}
+        {/* <Slider {...settings}>
+            <div className = 'imrg'>
+                <img src={camping1} style={{ backgroundImage: {camping1} }}/>
+                <img src={camping2} style={{ backgroundImage: {camping2} }}/>
+            </div>
+        </Slider> */}
       </div>
     );
   }

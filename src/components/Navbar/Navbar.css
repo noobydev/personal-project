@@ -1,20 +1,21 @@
 .btns {
-    color: rgb(5, 5, 5);
-    background: rgb(173, 50, 50);
-    background-color: rgb(255, 255, 255);
-    width: 125px;
+    /* color: rgb(5, 5, 5); */
+    /* background: rgb(173, 50, 50); */
+    /* background-color: rgb(255, 255, 255); */
+    width: 150px;
     font-size: 17px;
     height: 30px;
+    font-family: Courier New, Courier, monospace;
     /* justify-content: space-around */
     /* display: inline; */
    /* border: none; */
   }
   
-  .App {
+  .Apps {
       height: 40px;
       /* background-color: blue; */
       /* background-color: grey; */
-      border: solid 1px black ;
+      /* border: solid 1px black ; */
       /* position: relative; */
       top: 0;
       position: sticky;
@@ -24,9 +25,10 @@
   
   }
 
-  .headerstuff {
-      display: inline-block;
-      /* justify-content: center; */
-      /* flex-direction: row; */
+  /* .headerstuff {
+      display: inline-block; 
+      justify-content: center;
+      flex-direction: row;
 
-  }
+  } */
+  

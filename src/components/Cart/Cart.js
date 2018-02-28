@@ -4,6 +4,7 @@ import StripeCheckout from "react-stripe-checkout";
 import { deleteItems } from "../../ducks/reducer";
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom'
+import Navbar from '../Navbar/Navbar'
 const stripePublicKey = process.env.REACT_APP_STRIPE_PUBLIC_KEY;
 
 class Cart extends Component {
@@ -38,24 +39,28 @@ class Cart extends Component {
   // }
 
   render() {
-    const displayItems = this.state.cartItems.map((c, i) => {
+    console.log(this.state.cartItems)
+    let total = 0
+    const displayItems = this.state.cartItems.length ? this.state.cartItems.map((c, i) => {
       console.log(c);
+      total += +c.price;
       return (
         <div key={i}>
           {c.product_name}
 
+          
           <img src={c.img} alt="" />
           {/* {c.cart_item_id} */}
           <button onClick={() => this.props.deleteItems(c.cart_item_id)}>delete</button>
+          {c.price}
+          
         </div>
-      );
-    });
+      )
+    }) : null;
     return (
       <div className="App">
+        <Navbar />
         {displayItems}
-        <Link  to={`/tents`}>
-                <a><button className='btns'>Tents</button></a>
-                </Link>
         <header>
           {" "}
           <StripeCheckout
@@ -64,6 +69,7 @@ class Cart extends Component {
             amount={this.state.amount}
           />
         </header>
+      <h2>Total Price:{total.toFixed(2)}</h2>
       </div>
     );
   }
