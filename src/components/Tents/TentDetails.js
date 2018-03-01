@@ -37,7 +37,7 @@ class TentDetails extends Component {
 
   render() {
     var settings = {
-      dots: true,
+      // dots: true,
       infinite: true,
       speed: 500,
       slidesToShow: 1,
@@ -48,7 +48,11 @@ class TentDetails extends Component {
     return (
       <div className = 'SimpleSlider'>
         <Navbar />
-        <Slider>
+      <div className = 'title'>
+
+        {this.state.tent.product_name}
+      </div>
+        <Slider {...settings}>
 
         <a>
           <img className = 'imrg' src={this.state.tent.img_4} alt="" />
@@ -60,17 +64,18 @@ class TentDetails extends Component {
           <img className = 'imrg' src={this.state.tent.img_2} alt="" />
         </a>
         </Slider>
-        {this.state.tent.product_name}
-        <div>{this.state.tent.description}</div>
+        <div className = 'description'>{this.state.tent.description}</div>
         {/* <a>
                 <img src={this.state.tent.img} />
                 </a> */}
         {this.state.toggle ? (
-          <a href="http://localhost:3030/auth">
+          <a href={process.env.REACT_APP_LOGIN}>
             <button>Login</button>
           </a>
         ) : null}
         
+        <div className = 'cart'>
+
         <a>
           <button
             className="btn"
@@ -81,6 +86,7 @@ class TentDetails extends Component {
             add to cart
           </button>
         </a>
+        </div>
       </div>
     );
   }

@@ -1,56 +1,89 @@
 .product-container {
-    min-height: 309px;
-    background: #fff;
-    box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.2);
-    float: left;
-    list-style: none;
-    margin: 1% 1% 0 0;
-    overflow: hidden;
-    padding: 10px 15px 10px;
-    position: relative;
-    width: 24.25%;
+  min-height: 309px;
+  background: #fff;
+  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.2);
+  float: left;
+  list-style: none;
+  margin: 1% 1% 0 0;
+  overflow: hidden;
+  padding: 10px 15px 10px;
+  position: relative;
+  width: 24.25%;
 }
 
+.cart {
+    
+}
+
+.title {
+  text-align: center;
+}
+
+.description {
+  text-align: center;
+  /* background-color: skyblue; */
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.TentSlider {
+  left: -986px !important;
+}
 
 .SimpleSlider {
-    height: 100vh;
-    width: 100vw;
-    background: rgb(255, 255, 255);
-    /* border: solid 1px black ; */
-    /* position: fixed; */
-    /* top: 0; */
-    /* width: 100%; */
+  height: 100vh;
+  width: 100vw;
+  background: rgb(255, 255, 255);
+  /* border: solid 1px black ; */
+  /* position: fixed; */
+  /* top: 0; */
+  /* width: 100%; */
+}
+
+/* .slick-slide {
+    margin: 0 27px;
+    height: 100px;
 
 }
 
+.slick-list {
+    margin: 0 -27px;
+} */
 
 .slick-slider {
-    width: 80%;
-    /* height: 50%; */
-    /* background-size: 400px; */
-    padding: 20px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    
-  }
+  width: 50%;
+  /* height: 50%; */
+  /* background-size: 400px; */
+  padding: 20px;
+  /* background-color: red; */
+  background-size: cover;
+  background-position: center center;
+  /* display: block;
+  margin-left: auto;
+  margin-right: auto; */
+}
 
+button.slick-arrow {
+  border: none !important;
+  font-family: none;
+  color: skyblue;
+  /* position: absolute;  */
+  /* left: -1px; */
+  /* left: 50px; */
+}
 
-  
-  button.slick-arrow {
-      border: none;  
-      font-family: none; 
-      color: skyblue; 
-    }
-    
-    .slick-prev:before, .slick-next:before {
-        color: skyblue;
-        
-    }
+.slick-prev:before,
+.slick-next:before {
+  color: skyblue;
+  padding: none;
+}
 
+.slick-prev,
+.slick-next {
+  padding: none;
+}
 
-
-            /* li {
+/* li {
                height: 100px;
                width: 100px;
                background: grey;
@@ -66,5 +99,3 @@
            a {
                margin-left: 100px;
            }  */
-
-

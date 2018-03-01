@@ -11,10 +11,11 @@ class Cart extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cartItems: []
+      cartItems: [],
+      quantity: {}
     };
   }
-
+  
   onToken = token => {
     console.log("token", token);
     token.card = void 0;
@@ -34,6 +35,24 @@ class Cart extends Component {
       .catch(console.log);
   }
 
+  handleQuantity( qty, id ) {
+    let qtyCopy = Object.assign( {}, this.state.quantity )
+    qtyCopy[id] = qty;
+    this.setState({ 
+      quantity: qtyCopy
+    }, () => {
+      console.log(this.state.quantity)
+    })
+  }
+
+
+  handleQuantityClick(id) {
+    axios.put('/api/update', {quantity: this.state.quantity}).then( res => 
+      console.log(res)
+    )
+  }
+
+
   // deleteItem() {
   //     axios.delete('/api/cart/:id',)
   // }
@@ -52,6 +71,8 @@ class Cart extends Component {
           <img src={c.img} alt="" />
           {/* {c.cart_item_id} */}
           <button onClick={() => this.props.deleteItems(c.cart_item_id)}>delete</button>
+          <button onClick={() => this.handleQuantityClick() }>Update</button>
+          <input className = 'input'  type="number" placeholder = {c.quantity} onChange={e => this.handleQuantity(e.target.value, c.cart_item_id)} />
           {c.price}
           
         </div>

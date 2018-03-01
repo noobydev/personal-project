@@ -8,7 +8,7 @@ import camping2 from "../../images/camping2.jpg";
 import camping3 from "../../images/camping3.jpg";
 import 'slick-carousel/slick/slick-theme.css'
 import 'slick-carousel/slick/slick.css'
-// import './Home.css';
+import './Home.css';
 
 export default class Home extends Component {
   render() {
@@ -29,6 +29,8 @@ export default class Home extends Component {
     return (
       <div className="SimpleSlider">
           <Navbar />
+      <div className  = 'HomeSlider'>
+
         <Slider {...settings}>
           {images.map(img => (
             <div className="imrg" style={{ backgroundImage: `url(${img})` }}>
@@ -36,6 +38,8 @@ export default class Home extends Component {
             </div>
           ))}
         </Slider>
+      </div>
+
         {/* <Slider {...settings}>
             <div className = 'imrg'>
                 <img src={camping1} style={{ backgroundImage: {camping1} }}/>

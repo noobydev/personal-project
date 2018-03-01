@@ -23,6 +23,7 @@ const {
 
 app.use(cors());
 app.use(bodyParser.json());
+app.use( express.static( `${__dirname}/../build` ) );
 
 app.post('/api/payment', function(req, res, next){
     //convert amount to pennies
@@ -177,11 +178,17 @@ app.get("/api/cart", function(req, res) {
 //     res.status(200).send()
 //  })
 
-//  app.put('/api/update/', function(req, res) {
-//     // console.log()
-
-//     res.status(200).send()
-// })
+ app.put('/api/update/', (req, res) => {
+    // console.log()
+  let db = req.app.get('db')
+  const {quantity} = req.body
+  for (let key in quantity){
+    db.update_cart([quantity[key],key]).then( response => {
+      res.send(response)
+    }
+    ).catch(console.log)
+  }
+})
 
 app.delete("/api/delete/:id", function(req, res) {
   let db = req.app.get("db");
@@ -249,7 +256,7 @@ app.get("/auth", passport.authenticate("auth0"));
 app.get(
   "/auth/callback",
   passport.authenticate("auth0", {
-    successRedirect: "http://localhost:3000#/cart"
+    successRedirect: process.env.SUCCESSREDIRECT
   })
 );
 
@@ -263,7 +270,7 @@ app.get("/auth/me", (req, res) => {
 
 app.get("/logout", (req, res) => {
   req.logOut();
-  res.redirect("http://localhost:3000/#/home");
+  res.redirect(process.env.REACT_APP_LOGOUT);
 });
 
 app.listen(SERVER_PORT, () => {
