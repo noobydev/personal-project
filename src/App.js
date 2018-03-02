@@ -3,11 +3,12 @@ import './App.css';
 import { Route, HashRouter, Switch } from 'react-router-dom';
 import Home from './components/Home/Home';
 import Backpack from './components/Backpacks/AllBackpacks';
-// import NotificationContainer from './components/Backpacks/Backpacks';
+import BackpackDetails from './components/Backpacks/BackpackDetails';
 import Shoes from './components/Shoes/Shoes';
+import SleepyBag from './components/SleepyBags/SleepyBags';
+import SleepyBagDetails from './components/SleepyBags/SleepyBagDetails';
 import Tent from './components/Tents/AllTents';
 import TentDetails from './components/Tents/TentDetails';
-import SleepyBag from './components/SleepyBags/SleepyBags';
 import Cart from './components/Cart/Cart';
 
 
@@ -21,7 +22,9 @@ class App extends Component {
             <Route exact path='/tents' component={Tent} />
             <Route path='/tent/:id' component={TentDetails} />
             <Route path='/sleepybags' component={SleepyBag} />
+            <Route path='/sleepybag/:id' component={SleepyBagDetails} />
             <Route path='/backpacks' component={Backpack} />
+            <Route path='/backpack/:id' component={BackpackDetails} />
             {/* <Route path='/backpacks' component={ NotificationContainer } /> */}
             <Route path='/shoes' component={Shoes} />
             <Route path='/cart' component={Cart} />

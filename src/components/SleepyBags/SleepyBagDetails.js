@@ -3,6 +3,11 @@ import { connect } from "react-redux";
 import { getSleepingBag } from "../../ducks/reducer";
 import axios from "axios";
 import Navbar from '../Navbar/Navbar'
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import Slider from 'react-slick';
+
+
 class SleepyBagDetails extends Component {
   constructor(props) {
     super(props);
@@ -13,12 +18,9 @@ class SleepyBagDetails extends Component {
   }
 
   componentWillMount() {
-    axios
-      .get(`/api/sleepybag/${this.props.match.params.id}`)
-      console.log(this.props.params.match)
-      .then(response => {
-        console.log(response);
-        console.log('hits');
+    axios.get(`/api/sleepybag/${this.props.match.params.id}`).then(response => {
+    console.log(this.state.sleeping_bag)
+    
         this.setState({ sleeping_bag: response.data[0] });
       })
       .catch(console.log);
@@ -27,13 +29,24 @@ class SleepyBagDetails extends Component {
   addToCart() {
     axios.post("/api/layaway", { itemId: this.props.match.params.id });
     this.setState({ toggle: !this.state.toggle });
-    console.log('asdf')
+    console.log('asdf')    
   }
 
   render() {
+    var settings = { 
+      // dots: true, 
+      infinite: true, 
+      speed: 500, 
+      slidesToShow: 1, 
+      slidesToScroll: 1, 
+      fade: true, 
+      pauseOnHover:false
+    };
     return (
-      <div>
+      <div className = 'SimpleSlider sleepy-details'>
         <Navbar />
+        <div>{this.state.sleeping_bag.product_name}</div>
+        <Slider {...settings}>
         <a>
           <img src={this.state.sleeping_bag.img_4} alt="" />
         </a>
@@ -43,6 +56,7 @@ class SleepyBagDetails extends Component {
         <a>
           <img src={this.state.sleeping_bag.img_2} alt="" />
         </a>
+        </Slider>
         {this.state.toggle ? (
           <a href={process.env.REACT_APP_LOGIN}>
             <button>Login</button>

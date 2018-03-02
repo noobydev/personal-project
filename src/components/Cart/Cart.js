@@ -53,10 +53,9 @@ class Cart extends Component {
   // }
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     let total = 0;
-    const displayItems = this.props.cart.length
-      ? this.props.cart.map((c, i) => {
+    const displayItems = this.props.cart.length ? this.props.cart.map((c, i) => {
           console.log(c);
           total += +c.price;
           return (
@@ -94,7 +93,7 @@ class Cart extends Component {
             amount={this.props.amount}
           />
         </header>
-        <h2>Total Price:{total.toFixed(2)}</h2>
+        <h2>Total Price: $ {total.toFixed(2)}</h2>
       </div>
     );
   }

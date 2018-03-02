@@ -103,6 +103,8 @@ app.get("/api/tent/:id", (req, res) => {
   });
 });
 
+// app.get SleepyBag db_get_backpacks
+
 app.get('/api/sleepybag', (req, res) => {
   const db = req.app.get('db');
   db.get_all_sleeping_bags().then( response => {
@@ -119,16 +121,25 @@ app.get('/api/sleepybag/:id', (req, res) => {
   })
 })
 
+// app.get Backpack db_get_shoes
+
 app.get( '/api/backpack/', ( req, res ) => {
-  const db = req.app.get('db')
-  db.get_all_backpacks().then( resp => {
-    res.send(resp)
+  const db = req.app.get("db")
+  db.get_all_backpacks().then( response => {
+    res.send(response)
   })
 } )
 
-// app.get SleepyBag db_get_backpacks
+app.get('/api/backpack/:id', (req, res) => {
+  // console.log('hitasdf')  
+  const db = req.app.get('db')
+  const id = req.params.id;
+  db.get_backpack([id]).then(response => {
+    res.send(response)
+  })
+})
 
-// app.get Backpack db_get_shoes
+
 
 // app.get shoes db_get_sleeping_bags
 
@@ -159,7 +170,7 @@ app.get("/api/cart", function(req, res) {
         db
           .get_user_cart(req.user.id)
           .then(resp => {
-            console.log(resp);
+            // console.log(resp);
             res.status(200).send(resp);
           })
           .catch(console.log);

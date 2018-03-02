@@ -15,6 +15,8 @@ const GET_SLEEPING_BAG = 'GET_SLEEPING_BAG';
 const DELETE_ITEM = "DELETE_ITEM";
 const GET_CART = 'GET_CART';
 const GET_BACKPACK = 'GET_BACKPACK';
+
+
 export function getUser() {
 
     let user = axios.get('/auth/me').then(res => {
@@ -57,7 +59,7 @@ export function getTent(tent) {
 
 export function getSleepingBag(sleeping_bag) {
     let user = axios.get('/api/sleepybag').then(res => {
-        console.log(res.data)
+        // console.log(res.data)
         return res.data
     })
     return {
