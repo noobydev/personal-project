@@ -3,9 +3,9 @@ import axios from "axios";
 import StripeCheckout from "react-stripe-checkout";
 import { deleteItems, getCart } from "../../ducks/reducer";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
-const stripePublicKey = process.env.REACT_APP_STRIPE_PUBLIC_KEY;
+// const stripePublicKey = process.env.REACT_APP_STRIPE_PUBLIC_KEY;
 
 class Cart extends Component {
   constructor(props) {

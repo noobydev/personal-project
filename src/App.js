@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { Route, HashRouter, Switch } from 'react-router-dom';
 import Home from './components/Home/Home';
-import Backpack from './components/Backpacks/Backpacks';
+import Backpack from './components/Backpacks/AllBackpacks';
 // import NotificationContainer from './components/Backpacks/Backpacks';
 import Shoes from './components/Shoes/Shoes';
 import Tent from './components/Tents/AllTents';

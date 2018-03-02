@@ -119,6 +119,13 @@ app.get('/api/sleepybag/:id', (req, res) => {
   })
 })
 
+app.get( '/api/backpack/', ( req, res ) => {
+  const db = req.app.get('db')
+  db.get_all_backpacks().then( resp => {
+    res.send(resp)
+  })
+} )
+
 // app.get SleepyBag db_get_backpacks
 
 // app.get Backpack db_get_shoes

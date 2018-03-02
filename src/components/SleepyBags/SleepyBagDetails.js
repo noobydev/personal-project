@@ -22,7 +22,7 @@ class SleepyBagDetails extends Component {
         this.setState({ sleeping_bag: response.data[0] });
       })
       .catch(console.log);
-  }
+  }  
 
   addToCart() {
     axios.post("/api/layaway", { itemId: this.props.match.params.id });

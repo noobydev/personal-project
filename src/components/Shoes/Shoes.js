@@ -5,7 +5,7 @@ import Navbar from '../Navbar/Navbar'
 export default class Shoes extends Component {
     render() {
         return (
-            <div className='App'>  
+            <div className=''>  
                 <Navbar />
                 {/* <img src={} alt=""/> */}
             </div> 

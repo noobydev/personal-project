@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "./Home.css";
 import Navbar from "../Navbar/Navbar";
 import Slider from "react-slick";
@@ -9,6 +9,7 @@ import camping3 from "../../images/camping3.jpg";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import "./Home.css";
+// import reducer from "../../ducks/reducer";
 
 export default class Home extends Component {
   render() {
@@ -34,7 +35,7 @@ export default class Home extends Component {
         <div className="HomeSlider">
           <Slider {...settings}>
             {images.map(img => (
-              <div className="imrg" style={{ backgroundImage: `url(${img})` }}>
+              <div key = {img} className="imrg" style={{ backgroundImage: `url(${img})` }}>
                 {/* <h2>TEXT</h2> */}
               </div>
             ))}
@@ -51,3 +52,5 @@ export default class Home extends Component {
     );
   }
 }
+
+
