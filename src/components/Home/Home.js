@@ -6,9 +6,9 @@ import Slider from "react-slick";
 import camping1 from "../../images/camping1.jpg";
 import camping2 from "../../images/camping2.jpg";
 import camping3 from "../../images/camping3.jpg";
-import 'slick-carousel/slick/slick-theme.css'
-import 'slick-carousel/slick/slick.css'
-import './Home.css';
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import "./Home.css";
 
 export default class Home extends Component {
   render() {
@@ -21,24 +21,25 @@ export default class Home extends Component {
       autoplay: true,
       autoplaySpeed: 2000,
       fade: true,
-      pauseOnHover: false
+      // pauseOnHover: false,
+      // centerMode: true,
+      nextArrow: null
     };
 
-    let images = [camping1, camping2, camping3]
+    let images = [camping1, camping2, camping3];
 
     return (
       <div className="SimpleSlider">
-          <Navbar />
-      <div className  = 'HomeSlider'>
-
-        <Slider {...settings}>
-          {images.map(img => (
-            <div className="imrg" style={{ backgroundImage: `url(${img})` }}>
-              {/* <h2>TEXT</h2> */}
-            </div>
-          ))}
-        </Slider>
-      </div>
+        <Navbar />
+        <div className="HomeSlider">
+          <Slider {...settings}>
+            {images.map(img => (
+              <div className="imrg" style={{ backgroundImage: `url(${img})` }}>
+                {/* <h2>TEXT</h2> */}
+              </div>
+            ))}
+          </Slider>
+        </div>
 
         {/* <Slider {...settings}>
             <div className = 'imrg'>

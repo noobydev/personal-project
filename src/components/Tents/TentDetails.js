@@ -46,7 +46,7 @@ class TentDetails extends Component {
       pauseOnHover: false
     };
     return (
-      <div className = 'SimpleSlider'>
+      <div className = 'SimpleSlider tent-details'>
         <Navbar />
       <div className = 'title'>
 

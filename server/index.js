@@ -21,9 +21,9 @@ const {
   STRIPE_SECRET_KEY
 } = process.env;
 
+app.use( express.static( `${__dirname}/../build` ) );
 app.use(cors());
 app.use(bodyParser.json());
-app.use( express.static( `${__dirname}/../build` ) );
 
 app.post('/api/payment', function(req, res, next){
     //convert amount to pennies
@@ -114,7 +114,7 @@ app.get('/api/sleepybag/:id', (req, res) => {
   console.log('hit')
   const db = req.app.get('db');
   const id = req.params.id;
-  db.get_tent([id]).then( response => {
+  db.get_sleeping_bag([id]).then( response => {
     res.send(response)
   })
 })

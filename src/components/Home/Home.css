@@ -5,7 +5,7 @@
   /* width: 125px; */
   font-size: 17px;
   /* display: inline; */
- /* border: none; */
+  /* border: none; */
 }
 
 .HomeSlider {
@@ -13,21 +13,20 @@
 }
 
 .SimpleSlider {
-    height: 100vh;
-    width: 100vw;
-    background: grey;
-    /* border: solid 1px black ; */
-    /* position: fixed; */
-    /* top: 0; */
-    /* width: 100%; */
-
+  height: 100vh;
+  width: 100vw;
+  background: rgb(230, 158, 201);
+  /* border: solid 1px black ; */
+  /* position: fixed; */
+  /* top: 0; */
+  /* width: 100%; */
 }
 
 /* .App {
     text-align: center;
   } */
-  
-  /* .imrg {
+
+/* .imrg {
     background-color: red;
     height: 400px;
     width: 500px;
@@ -38,35 +37,32 @@
     display: flex; 
     justify-content: center;
   } */
-  
 
-  .imrg {
-    /* background-color: red; */
-    height: 500px !important;
-    /* max-width: 1000px !important; */
-    position: relative;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    /* padding: 100px; */
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-  }
+.imrg {
+  /* background-color: red; */
+  height: 500px !important;
+  /* max-width: 1000px !important; */
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /* padding: 100px; */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
 
+.slick-slider {
+  width: 96%;
+  background-color: rgb(44, 44, 216);
+  /* height: 50%; */
+  /* background-size: 400px; */
+  padding: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 
- .slick-slider {
-   width: 80%;
-   background-color: blue;
-   /* height: 50%; */
-   /* background-size: 400px; */
-   padding: 20px;
-   display: block;
-   margin-left: auto;
-   margin-right: auto;
-   
- }
-
- /* element.style {
+/* element.style {
    left: -486px;
  } */

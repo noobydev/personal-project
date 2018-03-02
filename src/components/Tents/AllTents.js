@@ -20,7 +20,7 @@ class Tent extends Component {
             </button>
           </Link>
           <div>{tent.product_name}</div>
-          <div>{tent.price}</div>
+          <div>$ {tent.price}</div>
           <div>{tent.rating}</div>
         </div>
       );

@@ -11,19 +11,19 @@ import './Navbar.css';
                 <Link to={'/'}>
                 <button className = 'btns'>Home</button></Link>
                 <Link  to={`/tents`}>
-                <a><button className='btns'>Tents</button></a>
+                <button className='btns'>Tents</button>
                 </Link>
                 <Link to={'/sleepybags'}>
-                <a><button className='btns'>Sleeping Bags</button></a>
+                <button className='btns'>Sleeping Bags</button>
                 </Link>
                 <Link to={'/backpacks'}>
-                <a><button className='btns'>Backpacks</button></a>
+                <button className='btns'>Backpacks</button>
                 </Link>
                 <Link to={'/shoes'}>
-                <a><button className='btns'>Shoes</button></a>
+                <button className='btns'>Shoes</button>
                 </Link>
                 <Link to={'/cart'}>
-                <a><button className='btns'>Cart</button></a>
+                <button className='btns'>Cart</button>
                 </Link>
 
                 </div>
