@@ -5,7 +5,7 @@ import { deleteItems, getCart } from "../../ducks/reducer";
 import { connect } from "react-redux";
 // import { Link } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
-import './Cart.css';
+import "./Cart.css";
 // const stripePublicKey = process.env.REACT_APP_STRIPE_PUBLIC_KEY;
 
 class Cart extends Component {
@@ -27,29 +27,31 @@ class Cart extends Component {
   };
 
   componentDidMount() {
-    axios.get('/auth/me')
-    .then((res) => console.log('this is response', res.data))
-    .catch(() => window.location = process.env.REACT_APP_LOGIN)
+    axios
+      .get("/auth/me")
+      .then(res => console.log("this is response", res.data))
+      .catch(() => (window.location = process.env.REACT_APP_LOGIN));
     this.props.getCart();
-    
   }
-
-  
 
   handleQuantity(qty, id) {
     let qtyCopy = Object.assign({}, this.state.quantity);
     qtyCopy[id] = qty;
-    this.setState(
-      {
-        quantity: qtyCopy
-      },
-      () => {
-        console.log(this.state.quantity);
-      }
-    );
+
+    this.setState({
+      quantity: qtyCopy
+    });
   }
 
-  handleQuantityClick(id) {
+  handleQuantityClick(id, secondId) {
+    secondId = String(secondId);
+    console.log(secondId);
+    console.log("this is the props ", this.props.cart[id]);
+    console.log(this.state.quantity[secondId]);
+    this.props.cart[id].quantity = this.state.quantity[secondId];
+    this.setState({
+      quantity: this.state.quantity
+    });
     axios
       .put("/api/update", { quantity: this.state.quantity })
       .then(res => console.log(res));
@@ -62,21 +64,28 @@ class Cart extends Component {
   render() {
     // console.log(this.props);
     let total = 0;
-    const displayItems = this.props.cart.length ? this.props.cart.map((c, i) => {
-          console.log(c);
-          total += +c.price;
+    const displayItems = this.props.cart.length
+      ? this.props.cart.map((c, i) => {
+          console.log("this is c", c);
+          total += +c.price * c.quantity;
+
           return (
             <div key={i}>
               {c.product_name}
-
               <img src={c.img} alt="" />
               {/* {c.cart_item_id} */}
               <button onClick={() => this.props.deleteItems(c.cart_item_id)}>
                 delete
               </button>
-              <button className = 'update' onClick={() => this.handleQuantityClick()}>Update</button>
+              <button
+                className="update"
+                onClick={() => this.handleQuantityClick(i, c.cart_item_id)}
+              >
+                Update
+              </button>
               <input
                 className="input"
+                size="25"
                 type="number"
                 placeholder={c.quantity}
                 onChange={e =>
@@ -94,25 +103,17 @@ class Cart extends Component {
         {displayItems}
         <header>
           {" "}
+          <h2>Total Price: $ {total.toFixed(2)}</h2>
           <StripeCheckout
             token={this.onToken}
             stripeKey={process.env.REACT_APP_STRIPE_PUBLIC_KEY}
             amount={this.props.amount}
           />
         </header>
-        <h2>Total Price: $ {total.toFixed(2)}</h2>
       </div>
     );
   }
 }
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     onCartRemove: (cart) => {
-//       dispatch(deleteItems(id))
-//     }
-//   }
-// }
 
 function mapStateToProps(state) {
   return {
