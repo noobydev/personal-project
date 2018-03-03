@@ -5,6 +5,7 @@ const initialState = {
     tent: [],
     sleeping_bag: [],
     backpack: [],
+    shoes: [],
     items: [],
     cart: []
 }
@@ -15,6 +16,7 @@ const GET_SLEEPING_BAG = 'GET_SLEEPING_BAG';
 const DELETE_ITEM = "DELETE_ITEM";
 const GET_CART = 'GET_CART';
 const GET_BACKPACK = 'GET_BACKPACK';
+const GET_SHOES = 'GET_SHOES';
 
 
 export function getUser() {
@@ -47,7 +49,7 @@ export function getCart() {
 export function getTent(tent) {
 
     let user = axios.get('/api/tent').then(res => {
-        console.log(res)
+        // console.log(res)
         return res.data
     })
 
@@ -75,6 +77,17 @@ export function getBackpack( backpack ) {
     return {
         type: GET_BACKPACK,
         payload: bp
+    }
+}
+
+export function getShoes(shoes) {
+    let shoe = axios.get('/api/shoes').then( res => {
+        return res.data
+    }).catch(console.log)
+
+    return {
+        type: GET_SHOES,
+        payload: shoe
     }
 }
 
@@ -110,6 +123,10 @@ export default function reducer(state = initialState, action) {
         case GET_BACKPACK + '_FULFILLED':
             return Object.assign( {}, state, {
                 backpack: action.payload
+            })
+        case GET_SHOES + '_FULFILLED':
+            return Object.assign( {}, state, {
+                shoes: action.payload
             })
         case DELETE_ITEM + '_FULFILLED':
             console.log(action.payload)

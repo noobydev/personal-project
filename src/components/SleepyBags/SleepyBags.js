@@ -10,6 +10,7 @@ import './SleepyBag.css'
 class SleepyBag extends Component {
     componentDidMount() {
         this.props.getSleepingBag();
+        console.log(this.props.sleeping_bag)
     }
     render() {
         // console.log(this.props)

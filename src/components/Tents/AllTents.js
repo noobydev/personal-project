@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Navbar from '../Navbar/Navbar'
 
 class Tent extends Component {
+
   componentDidMount() {
     this.props.getTent();
   }
@@ -25,7 +26,6 @@ class Tent extends Component {
         </div>
       );
     });
-    // console.log(this.props.tent)
     return (
       <div className="AllTents">
         <Navbar />

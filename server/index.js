@@ -140,8 +140,21 @@ app.get('/api/backpack/:id', (req, res) => {
 })
 
 
-
 // app.get shoes db_get_sleeping_bags
+app.get('/api/shoes', (req, res) => {
+  const db = req.app.get('db')
+  db.get_all_shoes().then(response => {
+    res.send(response)
+  })
+})
+
+app.get('/api/shoe/:id', (req, res) => {
+  const db = req.app.get('db')
+  const id = req.params.id;
+  db.get_shoe([id]).then( response => {
+    res.send(response)
+  })
+})
 
 // cart
 
@@ -195,6 +208,8 @@ app.get("/api/cart", function(req, res) {
 
 //     res.status(200).send()
 //  })
+
+app.post
 
  app.put('/api/update/', (req, res) => {
     // console.log()

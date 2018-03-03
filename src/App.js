@@ -5,6 +5,7 @@ import Home from './components/Home/Home';
 import Backpack from './components/Backpacks/AllBackpacks';
 import BackpackDetails from './components/Backpacks/BackpackDetails';
 import Shoes from './components/Shoes/Shoes';
+import ShoeDetails from './components/Shoes/ShoeDetails';
 import SleepyBag from './components/SleepyBags/SleepyBags';
 import SleepyBagDetails from './components/SleepyBags/SleepyBagDetails';
 import Tent from './components/Tents/AllTents';
@@ -25,8 +26,8 @@ class App extends Component {
             <Route path='/sleepybag/:id' component={SleepyBagDetails} />
             <Route path='/backpacks' component={Backpack} />
             <Route path='/backpack/:id' component={BackpackDetails} />
-            {/* <Route path='/backpacks' component={ NotificationContainer } /> */}
             <Route path='/shoes' component={Shoes} />
+            <Route path='/shoe/:id' component={ShoeDetails} />
             <Route path='/cart' component={Cart} />
           </Switch>
         </HashRouter>

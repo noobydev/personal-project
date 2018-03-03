@@ -5,6 +5,7 @@ import { deleteItems, getCart } from "../../ducks/reducer";
 import { connect } from "react-redux";
 // import { Link } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
+import './Cart.css';
 // const stripePublicKey = process.env.REACT_APP_STRIPE_PUBLIC_KEY;
 
 class Cart extends Component {
@@ -26,8 +27,14 @@ class Cart extends Component {
   };
 
   componentDidMount() {
+    axios.get('/auth/me')
+    .then((res) => console.log('this is response', res.data))
+    .catch(() => window.location = process.env.REACT_APP_LOGIN)
     this.props.getCart();
+    
   }
+
+  
 
   handleQuantity(qty, id) {
     let qtyCopy = Object.assign({}, this.state.quantity);
@@ -67,7 +74,7 @@ class Cart extends Component {
               <button onClick={() => this.props.deleteItems(c.cart_item_id)}>
                 delete
               </button>
-              <button onClick={() => this.handleQuantityClick()}>Update</button>
+              <button className = 'update' onClick={() => this.handleQuantityClick()}>Update</button>
               <input
                 className="input"
                 type="number"
@@ -76,7 +83,7 @@ class Cart extends Component {
                   this.handleQuantity(e.target.value, c.cart_item_id)
                 }
               />
-              {c.price}
+              $ {c.price} ea.
             </div>
           );
         })
