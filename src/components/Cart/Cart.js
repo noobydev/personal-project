@@ -45,9 +45,9 @@ class Cart extends Component {
 
   handleQuantityClick(id, secondId) {
     secondId = String(secondId);
-    console.log(secondId);
-    console.log("this is the props ", this.props.cart[id]);
-    console.log(this.state.quantity[secondId]);
+    // console.log(secondId);
+    // console.log("this is the props ", this.props.cart[id]);
+    // console.log(this.state.quantity[secondId]);
     this.props.cart[id].quantity = this.state.quantity[secondId];
     this.setState({
       quantity: this.state.quantity
@@ -56,10 +56,6 @@ class Cart extends Component {
       .put("/api/update", { quantity: this.state.quantity })
       .then(res => console.log(res));
   }
-
-  // deleteItem() {
-  //     axios.delete('/api/cart/:id',)
-  // }
 
   render() {
     // console.log(this.props);
@@ -98,7 +94,7 @@ class Cart extends Component {
         })
       : null;
     return (
-      <div className="App">
+      <div className="cart">
         <Navbar />
         {displayItems}
         <header>
@@ -109,6 +105,7 @@ class Cart extends Component {
             stripeKey={process.env.REACT_APP_STRIPE_PUBLIC_KEY}
             amount={this.props.amount}
           />
+          <a href={process.env.REACT_APP_LOGOUT}><button>Log out</button></a>
         </header>
       </div>
     );

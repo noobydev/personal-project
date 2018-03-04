@@ -1,21 +1,29 @@
-.btn {
-  color: rgb(5, 5, 5);
+/* .btn { */
+  /* color: rgb(5, 5, 5); */
   /* background: rgb(173, 50, 50); */
   /* background-color: rgb(255, 255, 255); */
   /* width: 125px; */
-  font-size: 17px;
+  /* font-size: 17px; */
   /* display: inline; */
   /* border: none; */
-}
+/* } */
 
-.HomeSlider {
+/* .HomeSlider {
   left: -600px !important;
-}
+} */
 
 .SimpleSlider {
   height: 100vh;
   width: 100vw;
-  background: rgb(230, 158, 201);
+  /* margin: 0px !important; */
+  /* background: rgb(230, 158, 201);
+  background-image: url('../../images/campbackground.jpg');
+  background-size: cover;
+  position: relative;
+  top: 0;
+  bottom: 0; */
+  /* z-index: -10; */
+
   /* border: solid 1px black ; */
   /* position: fixed; */
   /* top: 0; */
@@ -40,28 +48,39 @@
 
 .imrg {
   /* background-color: red; */
-  height: 500px !important;
+  height: 100vh !important;
   /* max-width: 1000px !important; */
   position: relative;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  /* display: block; */
+  /* margin-left: auto;
+  margin-right: auto; */
   /* padding: 100px; */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
 
-.slick-slider {
-  width: 96%;
-  background-color: rgb(44, 44, 216);
+.h2text {
+  text-align: center;
+  padding: 300px;
+  font-size: 50px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: lightgray
+  
+}
+
+/* .slick-slider {
+  width: 100%;
+  height: 100%; */
+  /* background-color: rgb(44, 44, 216); */
   /* height: 50%; */
   /* background-size: 400px; */
-  padding: 20px;
+  /* padding: 20px;
   display: block;
   margin-left: auto;
   margin-right: auto;
-}
+  z-index: -10;
+} */
 
 /* element.style {
    left: -486px;

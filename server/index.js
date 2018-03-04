@@ -301,9 +301,9 @@ app.get("/auth/me", (req, res) => {
   }
 });
 
-app.get("/logout", (req, res) => {
+app.get("/auth/logout", (req, res) => {
   req.logOut();
-  res.redirect(process.env.REACT_APP_LOGOUT);
+  return res.redirect('http://localhost:3000/#/');
 });
 
 app.listen(SERVER_PORT, () => {

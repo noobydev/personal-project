@@ -7,6 +7,7 @@ import Navbar from "../Navbar/Navbar";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import Slider from "react-slick";
+import { ToastContainer, toast } from 'react-toastify';
 
 class TentDetails extends Component {
   constructor(props) {
@@ -16,6 +17,8 @@ class TentDetails extends Component {
       toggle: false
     };
   }
+
+  notify = () => toast('Item Added!')
 
   componentWillMount() {
     axios
@@ -52,6 +55,7 @@ class TentDetails extends Component {
     return (
       <div className="SimpleSlider tent-details">
         <Navbar />
+        <ToastContainer />
         <div className="title"> {this.state.tent.product_name} </div>
         <Slider {...settings}>
           <a>
@@ -85,6 +89,7 @@ class TentDetails extends Component {
               {" "}
               add to cart
             </button>
+            <button onClick={this.notify}>Notify !</button>
           </a>
         </div>
       </div>
