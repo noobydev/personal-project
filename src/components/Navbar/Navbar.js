@@ -10,31 +10,31 @@ import './Navbar.css';
                 <div className = 'topnav'>
                 <a>
                 <Link to={'/'}>
-                <button className = 'btns'>Home</button></Link>
+                <button className = 'button button1'>Home</button></Link>
                 </a>
                 <a>
                 <Link  to={`/tents`}>
-                <button className='btns'>Tents</button>
+                <button className='button button2'>Tents</button>
                 </Link>
                 </a>
                 <a>
                 <Link to={'/sleepybags'}>
-                <button className='btns'>Sleeping Bags</button>
+                <button className='button button3'>Sleeping Bags</button>
                 </Link>
                 </a>
                 <a>
                 <Link to={'/backpacks'}>
-                <button className='btns'>Backpacks</button>
+                <button className='button button4'>Backpacks</button>
                 </Link>
                 </a>
                 <a>
                 <Link to={'/shoes'}>
-                <button className='btns'>Shoes</button>
+                <button className='button button5'>Shoes</button>
                 </Link>
                 </a>
                 <a>
                 <Link to={'/cart'}>
-                <button className='btns'>Cart</button>
+                <button className='button button6'>Cart</button>
                 </Link>
                 </a>
 

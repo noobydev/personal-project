@@ -14,15 +14,15 @@ class Tent extends Component {
   render() {
     let tentsToDisplay = this.props.tent.map((tent, index) => {
       return (
-        <div key={index} className="product-container">
+        <div key={index} className="tentorder">
+          <div className = 'minititle'>{tent.product_name}</div>
           <Link to={`/tent/${tent.id}`}>
-            <button>
-              <img src={tent.img} alt="" />
+            <button className = 'littlepic'>
+              <img src={tent.img}  alt="" />
             </button>
           </Link>
-          <div>{tent.product_name}</div>
-          <div>$ {tent.price}</div>
-          <div>{tent.rating}</div>
+          <div className = 'minititle'>$ {tent.price}</div>
+          {/* <div>{tent.rating}</div> */}
         </div>
       );
     });

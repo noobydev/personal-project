@@ -21,7 +21,8 @@
       position: fixed;
       display: flex;
       z-index: 99999;
-      text-decoration: underline;
+      font-family: Arial, Helvetica, sans-serif;
+      /* text-decoration: underline; */
       /* opacity: 0.2; */
       /* justify-content: space-around; */
       /* width: 100%; */
@@ -38,20 +39,23 @@
   
   /* Add a black background color to the top navigation */
 .topnav {
-    background-color: rgb(184, 181, 181);
+    /* background-color: rgb(184, 181, 181); */
     overflow: hidden;
     border-radius: 25px;
     text-decoration: underline;
     display: inline-block;
-    margin: auto;
+    /* opacity: .5; */
+    margin-left: 310px;
+    margin-right: auto;
+    /* padding-left: 50px; */
 }
 
 /* Style the links inside the navigation bar */
 .topnav a {
     float: left;
-    color: #f2f2f2;
+    /* color: #f2f2f2; */
     text-align: center;
-    padding: 14px 16px;
+    padding: 2px 2px;
     text-decoration: none;
     font-size: 17px;
     z-index: 99999;    
@@ -59,12 +63,103 @@
 
 /* Change the color of links on hover */
 .topnav a:hover {
-    background-color: #ddd;
+    /* background-color: #ddd; */
     color: black;
 }
 
 /* Add a color to the active/current link */
 .topnav a.active {
     background-color: rgb(132, 236, 250);
+    color: white;
+}
+
+
+.button {
+    background-color: transparent; 
+    border: none;
+    /* color: white; */
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    
+}
+
+.button1 {
+    background-color: white; 
+    border-radius: 10px;    
+    color: rgb(17, 17, 17); 
+    border: 2px solid rgb(145, 247, 148);
+}
+
+.button1:hover {
+    background-color: #4CAF50;
+    color: white;
+    opacity: 1;
+}
+
+.button2 {
+    background-color: white;
+    border-radius: 10px;        
+    color: rgb(15, 15, 15); 
+    border: 2px solid rgb(104, 199, 228);
+}
+
+.button2:hover {
+    background-color: #008CBA;
+    color: white;
+}
+
+.button3 {
+    background-color: white;
+    border-radius: 10px;        
+    color: rgb(15, 15, 15); 
+    border: 2px solid #f17d74;
+}
+
+.button3:hover {
+    background-color: #f44336;
+    color: white;
+}
+
+.button4 {
+    background-color: white;
+    border-radius: 10px;        
+    color: rgb(19, 18, 18);
+    border: 2px solid #e986d8;
+}
+
+.button4:hover {
+    background-color: #d451f5;
+color: white;
+}
+
+.button5 {
+    background-color: white;
+    border-radius: 10px;            
+    color: rgb(22, 22, 22);
+    border: 2px solid #868383;
+}
+
+.button5:hover {
+    background-color: #555555;
+    color: white;
+}
+
+.button6 {
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;            
+    color: rgb(14, 13, 13);
+    border: 2px solid yellow;
+}
+
+.button6:hover {
+    background-color: rgb(243, 199, 76);
     color: white;
 }

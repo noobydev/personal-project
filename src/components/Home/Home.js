@@ -18,6 +18,7 @@ export default class Home extends Component {
   render() {
     var settings = {
       // dots: true,
+      arrows: false,
       infinite: true,
       speed: 500,
       slidesToShow: 1,
@@ -48,7 +49,7 @@ export default class Home extends Component {
         {/* <div className="HomeSlider"> */}
           <Slider {...settings}>
             {images.map((img, i) => (
-              <div key = {i} className="imrg" style={{ backgroundImage: `url(${img})` }}>
+              <div key = {i} className="homepic" style={{ backgroundImage: `url(${img})` }}>
                 <h2 className = 'h2text'>WELCOME TO HAPPY CAMPER</h2>
               </div>
             ))} 

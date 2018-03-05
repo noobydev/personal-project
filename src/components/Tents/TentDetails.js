@@ -18,6 +18,10 @@ class TentDetails extends Component {
     };
   }
 
+
+
+
+  
   notify = () => toast('Item Added!')
 
   componentWillMount() {
@@ -54,44 +58,35 @@ class TentDetails extends Component {
     };
     return (
       <div className="SimpleSlider tent-details">
+        
         <Navbar />
         <ToastContainer />
+        <div className = 'cartbtn'>
+             <a>
+             <button className="btn" onClick={() => {
+                 this.addToCart(); this.notify();
+               }}> 
+               add to cart
+             </button>
+           </a>
+        </div>
         <div className="title"> {this.state.tent.product_name} </div>
         <Slider {...settings}>
           <a>
-            <img className="imrg" src={this.state.tent.img_4} alt="" />
+            <img className="imrg tent" src={this.state.tent.img_2} alt="" />
           </a>
           <a>
-            <img className="imrg" src={this.state.tent.img_3} alt="" />
+            <img className="imrg tent" src={this.state.tent.img_3} alt="" />
           </a>
           <a>
-            <img className="imrg" src={this.state.tent.img_2} alt="" />
+            <img className="imrg tent" src={this.state.tent.img_4} alt="" />
           </a>
         </Slider>
         <div className="description">{this.state.tent.description}</div>
-        {/*
-        <a>
-        <img src = {this.state.tent.img} /> 
-        </a> */}
-        {this.state.toggle ? (
-          <a href={process.env.REACT_APP_LOGIN}>
-            <button> Login </button>
-          </a>
-        ) : null}
-        <div className="cart">
-          <a>
-            <button
-              className="btn"
-              onClick={() => {
-                this.addToCart();
-              }}
-            >
-              {" "}
-              add to cart
-            </button>
-            <button onClick={this.notify}>Notify !</button>
-          </a>
-        </div>
+        
+        <style>
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+</style>
       </div>
     );
   }
@@ -102,3 +97,27 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, { getTent })(TentDetails);
+
+
+
+// was right under tent description
+
+// {this.state.toggle ? (
+//           <a href={process.env.REACT_APP_LOGIN}>
+//             <button> Login </button>
+//           </a>
+//         ) : null}
+//         <div className="cartbtn">
+//           <a>
+//             <button
+//               className="btn"
+//               onClick={() => {
+//                 this.addToCart();
+//               }}
+//             >
+//               {" "}
+//               add to cart
+//             </button>
+//             <button onClick={this.notify}>Notify !</button>
+//           </a>
+//         </div>
