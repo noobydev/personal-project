@@ -71,12 +71,14 @@ class Cart extends Component {
                 <div className = 'namecart'>
 
               {c.product_name}
+                </div>
+
               <img src={c.img} className = 'cartpic' alt="" />
-              <button onClick={() => this.props.deleteItems(c.cart_item_id)}>
-                delete
+              <button className = 'deletebtn' onClick={() => this.props.deleteItems(c.cart_item_id)}>
+                Delete
               </button>
               <button
-                className="update"
+                className="updatebtn"
                 onClick={() => this.handleQuantityClick(i, c.cart_item_id)}
               >
                 Update
@@ -90,8 +92,7 @@ class Cart extends Component {
                   this.handleQuantity(e.target.value, c.cart_item_id)
                 }
               />
-              $ {c.price} ea.
-                </div>
+                  $ {c.price} ea.
             </div>
           );
         })

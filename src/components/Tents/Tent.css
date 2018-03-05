@@ -191,6 +191,7 @@ body {
   box-shadow: 4px 4px rgb(45, 180, 243);
   font-family: 'Raleway', sans-serif;   
   font-size: 17px; 
+  cursor: pointer;
 }
 @-webkit-keyframes bounce {
   to { -webkit-transform: scale(1.2); }

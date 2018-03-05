@@ -51,7 +51,7 @@ class SleepyBagDetails extends Component {
     return (
       <div className="SimpleSlider sleepy-details">
         <Navbar />
-        <ToastContainer />
+        <ToastContainer position = 'bottom-right'/>
         <div className = 'cartbtn'>
              <a>
              <button className="sleepyorders" onClick={() => {

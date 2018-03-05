@@ -3,6 +3,7 @@
     background: rgba(218, 83, 195, 0.932);
     box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.2);
     float: left;
+    /* margin-top: 40px !important; */
     list-style: none;
     margin: 1% 1% 0 0;
     overflow: hidden;
@@ -174,7 +175,7 @@
     left: 50px;
     width: 175px;
     margin-top: 200px;
-    margin-left: 40px;
+    margin-left: 20px;
     line-height: 75px;
     text-align:center;
     /* opacity: 1; */
@@ -191,6 +192,7 @@
     box-shadow: 4px 4px rgb(148, 14, 130);
     font-family: 'Raleway', sans-serif;   
     font-size: 17px; 
+    cursor: pointer;
   }
   @-webkit-keyframes bounce {
     to { -webkit-transform: scale(1.2); }

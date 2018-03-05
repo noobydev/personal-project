@@ -8,6 +8,7 @@ import camping2 from "../../images/camping2.jpg";
 // import camping3 from "../../images/camping3.jpg";
 import camping4 from '../../images/camping4.jpg';
 import camping5 from '../../images/camping5.jpg';
+import camping7 from '../../images/camping7.jpg';
 // import campbackground from '../../images/campbackground.jpg';
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
@@ -41,7 +42,7 @@ export default class Home extends Component {
   // }
 
 
-    let images = [camping4, camping2, camping5];
+    let images = [camping4, camping2, camping5, camping7];
 
     return (
       <div className="SimpleSlider">

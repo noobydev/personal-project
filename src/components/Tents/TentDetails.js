@@ -60,7 +60,7 @@ class TentDetails extends Component {
       <div className="SimpleSlider tent-details">
         
         <Navbar />
-        <ToastContainer />
+        <ToastContainer position = 'bottom-right'/>
         <div className = 'cartbtn'>
              <a>
              <button className="order" onClick={() => {

@@ -35,7 +35,7 @@ class BackpackDetails extends Component {
 
   addToCart() {
     axios.post('/api/layaway', {
-      itedId: this.props.match.params.id
+      itemId: this.props.match.params.id
     });
     this.setState({
       toggle: !this.state.toggle
@@ -44,6 +44,9 @@ class BackpackDetails extends Component {
 
 
   render() {
+    // var ToastContainer = {
+    //   position: top-left
+    // }
     var settings = { 
       // dots: true, 
       infinite: true, 
@@ -51,12 +54,13 @@ class BackpackDetails extends Component {
       slidesToShow: 1, 
       slidesToScroll: 1, 
       fade: true, 
-      pauseOnHover:false
+      pauseOnHover:false,
+      // position: top-left
     };
     return (
       <div className = 'SimpleSlider pack-details'>
         <Navbar/>
-        <ToastContainer />
+        <ToastContainer position = 'bottom-right' />
         <div className = 'cartbtn'>
              <a>
              <button className="backpackorder" onClick={() => {

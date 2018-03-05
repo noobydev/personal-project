@@ -185,7 +185,7 @@
     left: 50px;
     width: 175px;
     margin-top: 200px;
-    margin-left: 40px;
+    margin-left: 30px;
     line-height: 75px;
     text-align:center;
     /* opacity: 1; */
@@ -201,7 +201,9 @@
     animation-iteration-count: 8;
     box-shadow: 4px 4px rgb(231, 248, 78);
     font-family: 'Raleway', sans-serif;   
-    font-size: 17px; 
+    font-size: 17px;
+    cursor: pointer;
+   
   }
   @-webkit-keyframes bounce {
     to { -webkit-transform: scale(1.2); }
