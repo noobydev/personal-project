@@ -16,20 +16,23 @@ class Shoes extends Component {
     render() {
         let shoesToDisplay = this.props.shoes.map((shoes, i) => {
             return (
-                <div key = {i} className = ''>
+                <div key = {i} className="shoeorder">
+                    <div className = 'minititle'>{shoes.product_name}</div>
                     <Link to = {`/shoe/${shoes.id}`}>
-                        <button>
+                        <button className = 'littlepic'>
                             <img src={shoes.img} alt=""/>
                         </button>
                     </Link>
-                    <div>{shoes.product_name}</div>
-                    <div>$ {shoes.price}</div>
+                    <div className = 'minititle'>$ {shoes.price}</div>
                 </div>
             )
         })
         return (
             <div className=''>  
                 <Navbar />
+                <style>
+                     @import url('https://fonts.googleapis.com/css?family=Raleway');
+                </style>
                 {shoesToDisplay}
             </div> 
         )

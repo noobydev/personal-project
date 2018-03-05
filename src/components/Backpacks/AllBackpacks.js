@@ -5,6 +5,7 @@ import { getBackpack } from '../../ducks/reducer';
 import { Link } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar'
 // import './Home.css';
+import './Backpack.css'
 
 class Backpack extends Component {
 
@@ -16,19 +17,23 @@ class Backpack extends Component {
         // console.log(this.props.backpack)
         let backpacksToDisplay = this.props.backpack.map( (bp, i) => {
             return (
-                <div key = {i} className = ''>
+                <div key = {i} className = 'backorder'>
+                    <div className = 'minititle'>{bp.product_name}</div>
                     <Link to ={`/backpack/${bp.id}`}>
-                    <button>
+                    <button className =  'littlepic'>
                         <img src={bp.img} alt=""/>
                     </button>
                     </Link>
-                    <div>{bp.product_name}</div>
+                    <div className = 'minititle'>$ {bp.price}</div>
                 </div>
             )
         })
         return (
             <div className=''>  
                 <Navbar />
+                <style>
+                    @import url('https://fonts.googleapis.com/css?family=Raleway');
+                </style>
                 {backpacksToDisplay}
             </div> 
         )

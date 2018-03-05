@@ -8,7 +8,7 @@ import camping2 from "../../images/camping2.jpg";
 // import camping3 from "../../images/camping3.jpg";
 import camping4 from '../../images/camping4.jpg';
 import camping5 from '../../images/camping5.jpg';
-import campbackground from '../../images/campbackground.jpg';
+// import campbackground from '../../images/campbackground.jpg';
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import "./Home.css";
@@ -24,7 +24,7 @@ export default class Home extends Component {
       slidesToShow: 1,
       slidesToScroll: 1,
       autoplay: true,
-      autoplaySpeed: 2300,
+      autoplaySpeed: 2500,
       fade: true,
       // pauseOnHover: false,
       // centerMode: true,
@@ -46,11 +46,12 @@ export default class Home extends Component {
     return (
       <div className="SimpleSlider">
         <Navbar />
+        
         {/* <div className="HomeSlider"> */}
           <Slider {...settings}>
             {images.map((img, i) => (
               <div key = {i} className="homepic" style={{ backgroundImage: `url(${img})` }}>
-                <h2 className = 'h2text'>WELCOME TO HAPPY CAMPER</h2>
+                <h2 className = 'h2text'>WELCOME TO THE HAPPY CAMPER</h2>
               </div>
             ))} 
           </Slider>

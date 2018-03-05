@@ -62,10 +62,12 @@
 
 .h2text {
   text-align: center;
-  padding: 300px;
+  padding-top: 300px;
+  /* margin-right: 160px;
+  margin-left: 160px; */
   font-size: 50px;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  color: lightgray
+  color: rgb(202, 202, 202)
   
 }
 

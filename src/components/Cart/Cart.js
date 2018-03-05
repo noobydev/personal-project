@@ -66,10 +66,12 @@ class Cart extends Component {
           total += +c.price * c.quantity;
 
           return (
-            <div key={i}>
+            <div key={i} className = 'dbitems'>
+              
+                <div className = 'namecart'>
+
               {c.product_name}
-              <img src={c.img} alt="" />
-              {/* {c.cart_item_id} */}
+              <img src={c.img} className = 'cartpic' alt="" />
               <button onClick={() => this.props.deleteItems(c.cart_item_id)}>
                 delete
               </button>
@@ -89,6 +91,7 @@ class Cart extends Component {
                 }
               />
               $ {c.price} ea.
+                </div>
             </div>
           );
         })
@@ -96,16 +99,19 @@ class Cart extends Component {
     return (
       <div className="cart">
         <Navbar />
+        <style>
+          @import url('https://fonts.googleapis.com/css?family=Raleway');
+        </style>
         {displayItems}
         <header>
           {" "}
-          <h2>Total Price: $ {total.toFixed(2)}</h2>
-          <StripeCheckout
+          <h2 className = 'price'>Total Price: $ {total.toFixed(2)}</h2>
+          <StripeCheckout className = 'prices'
             token={this.onToken}
             stripeKey={process.env.REACT_APP_STRIPE_PUBLIC_KEY}
             amount={this.props.amount}
           />
-          <a href={process.env.REACT_APP_LOGOUT}><button>Log out</button></a>
+          {/* <a href={process.env.REACT_APP_LOGOUT}><button>Log out</button></a> */}
         </header>
       </div>
     );

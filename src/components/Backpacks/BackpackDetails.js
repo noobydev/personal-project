@@ -6,6 +6,7 @@ import Navbar from "../Navbar/Navbar";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import Slider from 'react-slick';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 class BackpackDetails extends Component {
@@ -16,6 +17,10 @@ class BackpackDetails extends Component {
       toggle: false
     };
   }
+
+
+  notify = () => toast('Item Added!')
+  
 
   componentWillMount() {
     console.log(this.props.match.params);
@@ -49,37 +54,37 @@ class BackpackDetails extends Component {
       pauseOnHover:false
     };
     return (
-      <div className = 'SimpleSlider backpack-details'>
+      <div className = 'SimpleSlider pack-details'>
         <Navbar/>
-        <div>{this.state.backpack.product_name}</div>
+        <ToastContainer />
+        <div className = 'cartbtn'>
+             <a>
+             <button className="backpackorder" onClick={() => {
+                 this.addToCart(); this.notify();
+               }}> 
+               ADD ME TO CART!
+             </button>
+           </a>
+        </div>
+        <div className = 'packtitle'>{this.state.backpack.product_name}</div>
         <Slider {...settings}>
           <a>
             <img className = 'imrg backpack' src ={this.state.backpack.img_2} alt=""/>
           </a>
-        </Slider>
-        <div className="description">{this.state.backpack.description}</div>
-        {/*
-        <a>
-        <img src = {this.state.tent.img} /> 
-        </a> */}
-        {this.state.toggle ? (
-          <a href={process.env.REACT_APP_LOGIN}>
-            <button> Login </button>
-          </a>
-        ) : null}
-        <div className="cart">
           <a>
-            <button
-              className="btn"
-              onClick={() => {
-                this.addToCart();
-              }}
-            >
-              {" "}
-              add to cart
-            </button>
+            <img className="imrg backpack" src={this.state.backpack.img_3} alt="" />
           </a>
-        </div>
+          <a>
+            <img className="imrg backpack" src={this.state.backpack.img_4} alt="" />
+          </a>
+        </Slider>
+        <div className="backdescription">{this.state.backpack.description}</div>
+
+        <style>
+          @import url('https://fonts.googleapis.com/css?family=Raleway');
+        </style>
+       
+       
       </div>
     )
   }
@@ -89,3 +94,28 @@ class BackpackDetails extends Component {
     };
 
   export default connect(mapStateToProps, { getBackpack })(BackpackDetails)
+
+
+
+
+// was right under backpack description
+
+
+  // {this.state.toggle ? (
+  //   <a href={process.env.REACT_APP_LOGIN}>
+  //     <button> Login </button>
+  //   </a>
+  // ) : null}
+  // <div className="cart">
+  //   <a>
+  //     <button
+  //       className="btn"
+  //       onClick={() => {
+  //         this.addToCart();
+  //       }}
+  //     >
+  //       {" "}
+  //       add to cart
+  //     </button>
+  //   </a>
+  // </div>

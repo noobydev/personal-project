@@ -6,6 +6,8 @@ import Navbar from "../Navbar/Navbar";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import Slider from "react-slick";
+import { ToastContainer, toast } from 'react-toastify';
+
 
 class SleepyBagDetails extends Component {
   constructor(props) {
@@ -15,6 +17,9 @@ class SleepyBagDetails extends Component {
       toggle: false
     };
   }
+
+  notify = () => toast('Item Added!')
+  
 
   componentWillMount() {
     axios
@@ -46,33 +51,32 @@ class SleepyBagDetails extends Component {
     return (
       <div className="SimpleSlider sleepy-details">
         <Navbar />
-        <div>{this.state.sleeping_bag.product_name}</div>
+        <ToastContainer />
+        <div className = 'cartbtn'>
+             <a>
+             <button className="sleepyorders" onClick={() => {
+                 this.addToCart(); this.notify();
+               }}> 
+               ADD TO CART!
+             </button>
+           </a>
+        </div>
+        <div className = 'sleepytitle'>{this.state.sleeping_bag.product_name}</div>
         <Slider {...settings}>
           <a>
-            <img src={this.state.sleeping_bag.img_4} alt="" />
+            <img className="imrg sleepybag" src={this.state.sleeping_bag.img_2} alt="" />
           </a>
           <a>
-            <img src={this.state.sleeping_bag.img_3} alt="" />
+            <img className="imrg sleepybag" src={this.state.sleeping_bag.img_3} alt="" />
           </a>
           <a>
-            <img src={this.state.sleeping_bag.img_2} alt="" />
+            <img className="imrg sleepybag" src={this.state.sleeping_bag.img_4} alt="" />
           </a>
         </Slider>
-        {this.state.toggle ? (
-          <a href={process.env.REACT_APP_LOGIN}>
-            <button>Please Login</button>
-          </a>
-        ) : null}
-        <a>
-          <button
-            className="btn"
-            onClick={() => {
-              this.addToCart();
-            }}
-          >
-            add to cart
-          </button>
-        </a>
+        <div className="sleepydescription">{this.state.sleeping_bag.description}</div>
+        <style>
+          @import url('https://fonts.googleapis.com/css?family=Raleway');
+        </style>
       </div>
     );
   }
@@ -83,3 +87,24 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, { getSleepingBag })(SleepyBagDetails);
+
+
+
+// was right under sleepingbag description
+
+
+// {this.state.toggle ? (
+//   <a href={process.env.REACT_APP_LOGIN}>
+//     <button>Please Login</button>
+//   </a>
+// ) : null}
+// <a>
+//   <button
+//     className="btn"
+//     onClick={() => {
+//       this.addToCart();
+//     }}
+//   >
+//     add to cart
+//   </button>
+// </a>

@@ -8,27 +8,33 @@ import './SleepyBag.css'
 // import './Home.css';
 
 class SleepyBag extends Component {
+
     componentDidMount() {
         this.props.getSleepingBag();
         console.log(this.props.sleeping_bag)
     }
+
     render() {
         // console.log(this.props)
         let sleepybagToDisplay = this.props.sleeping_bag.map((sleeping_bag, index) => {
             return (
-                <div key = {index} className = 'product-containers'>
+                <div key = {index} className = 'sleepyorder'>
+                    <div className = 'minititle'>{sleeping_bag.product_name}</div>
                     <Link to = {`/sleepybag/${sleeping_bag.id}`}>
-                    <button>
+                    <button className = 'littlepic'>
                         <img src={sleeping_bag.img} alt=""/>
                     </button>
                     </Link>
-                    <div>{sleeping_bag.product_name}</div>
+                    <div className = 'minititle'>$ {sleeping_bag.price}</div>
                 </div>
             )
         })
         return (
-            <div>  
-            <Navbar />                
+            <div className = 'AllSleepy'>  
+            <Navbar /> 
+            <style>
+          @import url('https://fonts.googleapis.com/css?family=Raleway');
+        </style>               
                 {sleepybagToDisplay}
             </div> 
         )

@@ -29,6 +29,9 @@ class Tent extends Component {
     return (
       <div className="AllTents">
         <Navbar />
+        <style>
+          @import url('https://fonts.googleapis.com/css?family=Raleway');
+        </style>
         {/* <img src={} alt=""/> */}
         {/* <a>
           <button>tents page</button>

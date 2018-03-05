@@ -140,26 +140,26 @@
 color: white;
 }
 
-.button5 {
+.button6 {
     background-color: white;
     border-radius: 10px;            
     color: rgb(22, 22, 22);
     border: 2px solid #868383;
 }
 
-.button5:hover {
+.button6:hover {
     background-color: #555555;
     color: white;
 }
 
-.button6 {
+.button5 {
     background-color: rgb(255, 255, 255);
     border-radius: 10px;            
     color: rgb(14, 13, 13);
     border: 2px solid yellow;
 }
 
-.button6:hover {
+.button5:hover {
     background-color: rgb(243, 199, 76);
     color: white;
 }

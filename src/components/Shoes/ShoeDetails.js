@@ -7,6 +7,8 @@ import { getShoes } from '../../ducks/reducer';
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import Slider from 'react-slick';
+import { ToastContainer, toast } from 'react-toastify';
+
 
 
 class ShoesDetails extends Component {
@@ -15,8 +17,13 @@ class ShoesDetails extends Component {
         this.state = {
             shoes: {},
             toggle: false
-        }
+       
+       }
     }
+
+
+    notify = () => toast('Item Added!')
+    
 
     componentWillMount() {
         axios.get(`/api/shoe/${this.props.match.params.id}`).then( response => {
@@ -47,33 +54,35 @@ class ShoesDetails extends Component {
             pauseOnHover:false
           };
         return(
-            <div className = 'SimpleSlider backpack-details'>
-                <Navbar/>
-                <div>{this.state.shoes.product_name}</div>
+            <div className = 'SimpleSlider shoe-details'>
+                    <Navbar/>
+                    <ToastContainer />
+                    <div className = 'cartbtn'>
+                    <a>
+                    <button className="shoeorders" onClick={() => {
+                    this.addToCart(); this.notify();
+                    }}> 
+                    ADD ME TO CART!
+                    </button>
+                    </a>
+                 </div>
+                <div className = 'shoetitle'>{this.state.shoes.product_name}</div>
                 <Slider{...settings}>
                     <a>
                         <img className = 'imrg shoes' src={this.state.shoes.img_2} alt=""/>
                     </a>
+                    <a>
+                        <img className="imrg shoes" src={this.state.shoes.img_3} alt="" />
+                    </a>
+                    <a>
+                        <img className="imrg shoes" src={this.state.shoes.img_4} alt="" />
+                    </a>
                 </Slider>
-                <div className = 'description shoes'>{this.state.shoes.description}</div>
-                {this.state.toggle ? (
-          <a href={process.env.REACT_APP_LOGIN}>
-            <button> Login </button>
-          </a>
-        ) : null}
-        <div className="cart">
-          <a>
-            <button
-              className="btn"
-              onClick={() => {
-                this.addToCart();
-              }}
-            >
-              {" "}
-              add to cart
-            </button>
-          </a>
-        </div>
+                <div className = 'shoedescription'>{this.state.shoes.description}</div>
+                <style>
+                 @import url('https://fonts.googleapis.com/css?family=Raleway');
+                </style>
+                
             </div>
         )
     }
@@ -83,3 +92,26 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, { getShoes })(ShoesDetails)
+
+
+
+// was right under shoe discription
+
+// {this.state.toggle ? (
+//     <a href={process.env.REACT_APP_LOGIN}>
+//       <button> Login </button>
+//     </a>
+//   ) : null}
+//   <div className="cart">
+//     <a>
+//       <button
+//         className="btn"
+//         onClick={() => {
+//           this.addToCart();
+//         }}
+//       >
+//         {" "}
+//         add to cart
+//       </button>
+//     </a>
+//   </div>

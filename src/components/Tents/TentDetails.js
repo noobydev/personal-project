@@ -63,10 +63,10 @@ class TentDetails extends Component {
         <ToastContainer />
         <div className = 'cartbtn'>
              <a>
-             <button className="btn" onClick={() => {
+             <button className="order" onClick={() => {
                  this.addToCart(); this.notify();
                }}> 
-               add to cart
+               ADD ME TO CART!
              </button>
            </a>
         </div>
@@ -85,8 +85,8 @@ class TentDetails extends Component {
         <div className="description">{this.state.tent.description}</div>
         
         <style>
-@import url('https://fonts.googleapis.com/css?family=Raleway');
-</style>
+          @import url('https://fonts.googleapis.com/css?family=Raleway');
+        </style>
       </div>
     );
   }
