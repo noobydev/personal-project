@@ -1,14 +1,14 @@
 require("dotenv").config();
 
 const express = require("express"),
-  bodyParser = require('body-parser'),
-  cors = require('cors'),
-  stripe = require('stripe'),
+  bodyParser = require("body-parser"),
+  cors = require("cors"),
+  stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY),
   session = require("express-session"),
   passport = require("passport"),
   Auth0Strategy = require("passport-auth0"),
-  massive = require("massive"), 
-  app =  module.exports = express();
+  massive = require("massive"),
+  app = (module.exports = express());
 
 const {
   SERVER_PORT,
@@ -21,46 +21,44 @@ const {
   STRIPE_SECRET_KEY
 } = process.env;
 
-app.use( express.static( `${__dirname}/../build` ) );
+app.use(express.static(`${__dirname}/../build`));
 app.use(cors());
 app.use(bodyParser.json());
 
-app.post('/api/payment', function(req, res, next){
-    //convert amount to pennies
-    const amountArray = req.body.amount.toString().split('');
-    const pennies = [];
-    for (var i = 0; i < amountArray.length; i++) {
-      if(amountArray[i] === ".") {
-        if (typeof amountArray[i + 1] === "string") {
-          pennies.push(amountArray[i + 1]);
-        } else {
-          pennies.push("0");
-        }
-        if (typeof amountArray[i + 2] === "string") {
-          pennies.push(amountArray[i + 2]);
-        } else {
-          pennies.push("0");
-        }
-          break;
-      } else {
-          pennies.push(amountArray[i])
-      }
-    }
-    const convertedAmt = parseInt(pennies.join(''));
+app.post('/api/payment', (req, res, next) => {
+  // console.log('dude', req.body.amount);
+  let newAmount = parseInt((req.body.amount * 100)+'')
+  // console.log('dude', newAmount);
   
-    const charge = stripe.charges.create({
-    amount: convertedAmt, // amount in cents, again
-    currency: 'usd',
-    source: req.body.token.id,
-    description: 'Test charge from react app'
-  }, function(err, charge) {
-      if (err) return res.sendStatus(500)
-      return res.sendStatus(200);
-    // if (err && err.type === 'StripeCardError') {
-    //   // The card has been declined
-    // }
-  });
-  });
+  const charge = stripe.charges.create(
+      {
+          amount: newAmount,
+          currency: 'usd',
+          source: req.body.token.id,
+          description: 'Stripe Checkout test charge'
+      },
+      function(err, charge) {
+          if (err) {
+            console.log(err);
+            return res.status(500).send(err);
+          }
+          else return res.status(200).send(charge);
+      }
+  );
+});
+
+//   const charge = stripe.charges.create({
+//   amount: convertedAmt, // amount in cents, again
+//   currency: 'usd',
+//   source: req.body.token.id,
+//   description: 'Test charge from react app'
+// }, function(err, charge) {
+//     if (err) return res.sendStatus(500)
+//     return charge;
+//   // if (err && err.type === 'StripeCardError') {
+//   //   // The card has been declined
+//   // }
+// });
 
 // const app = module.exports = express();
 app.use(express.json());
@@ -95,7 +93,7 @@ app.get("/api/tent", (req, res) => {
 });
 
 app.get("/api/tent/:id", (req, res) => {
-  console.log('hitasdf')
+  console.log("hitasdf");
   const db = req.app.get("db");
   const id = req.params.id;
   db.get_tent([id]).then(response => {
@@ -105,56 +103,55 @@ app.get("/api/tent/:id", (req, res) => {
 
 // app.get SleepyBag db_get_backpacks
 
-app.get('/api/sleepybag', (req, res) => {
-  const db = req.app.get('db');
-  db.get_all_sleeping_bags().then( response => {
+app.get("/api/sleepybag", (req, res) => {
+  const db = req.app.get("db");
+  db.get_all_sleeping_bags().then(response => {
     res.send(response);
-  })
-})
+  });
+});
 
-app.get('/api/sleepybag/:id', (req, res) => {
-  console.log('hit')
-  const db = req.app.get('db');
+app.get("/api/sleepybag/:id", (req, res) => {
+  console.log("hit");
+  const db = req.app.get("db");
   const id = req.params.id;
-  db.get_sleeping_bag([id]).then( response => {
-    res.send(response)
-  })
-})
+  db.get_sleeping_bag([id]).then(response => {
+    res.send(response);
+  });
+});
 
 // app.get Backpack db_get_shoes
 
-app.get( '/api/backpack/', ( req, res ) => {
-  const db = req.app.get("db")
-  db.get_all_backpacks().then( response => {
-    res.send(response)
-  })
-} )
+app.get("/api/backpack/", (req, res) => {
+  const db = req.app.get("db");
+  db.get_all_backpacks().then(response => {
+    res.send(response);
+  });
+});
 
-app.get('/api/backpack/:id', (req, res) => {
-  // console.log('hitasdf')  
-  const db = req.app.get('db')
+app.get("/api/backpack/:id", (req, res) => {
+  // console.log('hitasdf')
+  const db = req.app.get("db");
   const id = req.params.id;
   db.get_backpack([id]).then(response => {
-    res.send(response)
-  })
-})
-
+    res.send(response);
+  });
+});
 
 // app.get shoes db_get_sleeping_bags
-app.get('/api/shoes', (req, res) => {
-  const db = req.app.get('db')
+app.get("/api/shoes", (req, res) => {
+  const db = req.app.get("db");
   db.get_all_shoes().then(response => {
-    res.send(response)
-  })
-})
+    res.send(response);
+  });
+});
 
-app.get('/api/shoe/:id', (req, res) => {
-  const db = req.app.get('db')
+app.get("/api/shoe/:id", (req, res) => {
+  const db = req.app.get("db");
   const id = req.params.id;
-  db.get_shoe([id]).then( response => {
-    res.send(response)
-  })
-})
+  db.get_shoe([id]).then(response => {
+    res.send(response);
+  });
+});
 
 // cart
 
@@ -174,7 +171,7 @@ app.get("/api/cart", function(req, res) {
   // console.log(req.user.id);
   // console.log(req.session);
   if (req.session.layaway) {
-    console.log('hello', req.user.id)
+    console.log("hello", req.user.id);
     db
       .add_to_cart(req.session.layaway, req.user.id, 1)
       .then(resp => {
@@ -191,8 +188,9 @@ app.get("/api/cart", function(req, res) {
       .catch(console.log);
   } else {
     db
-      .get_user_cart( req.user.id ).then( resp => {
-        res.send(resp)
+      .get_user_cart(req.user.id)
+      .then(resp => {
+        res.send(resp);
       })
       .catch(console.log);
   }
@@ -209,28 +207,33 @@ app.get("/api/cart", function(req, res) {
 //     res.status(200).send()
 //  })
 
-app.post
+app.post;
 
- app.put('/api/update/', (req, res) => {
-    // console.log()
-  let db = req.app.get('db')
-  const {quantity} = req.body
-  for (let key in quantity){
-    db.update_cart([quantity[key],key]).then( response => {
-      res.send(response)
-    }
-    ).catch(console.log)
+app.put("/api/update/", (req, res) => {
+  // console.log()
+  let db = req.app.get("db");
+  const { quantity } = req.body;
+  for (let key in quantity) {
+    db
+      .update_cart([quantity[key], key])
+      .then(response => {
+        res.send(response);
+      })
+      .catch(console.log);
   }
-})
+});
 
 app.delete("/api/delete/:id", function(req, res) {
   let db = req.app.get("db");
   const id = req.params.id;
   //id = ':id'
-  //id = 7 
-  db.delete_from_cart([id]).then(response => {
+  //id = 7
+  db
+    .delete_from_cart([id])
+    .then(response => {
       res.send(response);
-    }).catch(console.log);
+    })
+    .catch(console.log);
 });
 
 passport.use(
@@ -278,8 +281,8 @@ passport.deserializeUser((id, done) => {
   db
     .find_logged_in_user([id])
     .then(res => {
-      console.log('deserializedID',id)
-      console.log('deserializedUser',res[0])
+      console.log("deserializedID", id);
+      console.log("deserializedUser", res[0]);
       done(null, res[0]);
     })
     .catch(console.log);
@@ -303,7 +306,7 @@ app.get("/auth/me", (req, res) => {
 
 app.get("/auth/logout", (req, res) => {
   req.logOut();
-  return res.redirect('http://localhost:3000/#/');
+  return res.redirect("http://localhost:3000/#/");
 });
 
 app.listen(SERVER_PORT, () => {

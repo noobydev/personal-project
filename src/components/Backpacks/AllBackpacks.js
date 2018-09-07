@@ -16,16 +16,18 @@ class Backpack extends Component {
     render() {
         // console.log(this.props.backpack)
         let backpacksToDisplay = this.props.backpack.map( (bp, i) => {
-            return (
+            return (<div>
+
+                    <Link to ={`/backpack/${bp.id}`}>
                 <div key = {i} className = 'backorder'>
                     <div className = 'minititle'>{bp.product_name}</div>
-                    <Link to ={`/backpack/${bp.id}`}>
                     <button className =  'littlepic'>
                         <img src={bp.img} alt=""/>
                     </button>
-                    </Link>
                     <div className = 'minititle'>$ {bp.price}</div>
                 </div>
+                    </Link>
+            </div>
             )
         })
         return (

@@ -45,6 +45,7 @@
 .input {
   width: 24px;
   height: 17px;
+  border-radius: 5px;
 }
 
 .namecart {

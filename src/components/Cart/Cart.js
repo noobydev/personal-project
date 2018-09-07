@@ -13,16 +13,20 @@ class Cart extends Component {
     super(props);
     this.state = {
       cartItems: [],
-      quantity: {}
+      quantity: {},
+      amount: 0
     };
   }
 
   onToken = token => {
     console.log("token", token);
     token.card = void 0;
-    const amount = 999;
-    axios.post("/api/payment", { token, amount }).then(response => {
-      console.log("payment response", response);
+    const amount = this.props.cart.reduce((s, v) => {
+      return s + v.quantity * v.price;
+    }, 0);
+    console.log("amt", amount);
+    axios.post("/api/payment", { token, amount }).then(charge => {
+      console.log("charge", charge.data);
     });
   };
 
@@ -59,22 +63,20 @@ class Cart extends Component {
 
   render() {
     // console.log(this.props);
-    let total = 0;
+    let total = 0.0;
     const displayItems = this.props.cart.length
       ? this.props.cart.map((c, i) => {
           console.log("this is c", c);
           total += +c.price * c.quantity;
 
           return (
-            <div key={i} className = 'dbitems'>
-              
-                <div className = 'namecart'>
-
-              {c.product_name}
-                </div>
-
-              <img src={c.img} className = 'cartpic' alt="" />
-              <button className = 'deletebtn' onClick={() => this.props.deleteItems(c.cart_item_id)}>
+            <div key={i} className="dbitems">
+              <div className="namecart">{c.product_name}</div>
+              <img src={c.img} className="cartpic" alt="" />
+              <button
+                className="deletebtn"
+                onClick={() => this.props.deleteItems(c.cart_item_id)}
+              >
                 Delete
               </button>
               <button
@@ -92,7 +94,7 @@ class Cart extends Component {
                   this.handleQuantity(e.target.value, c.cart_item_id)
                 }
               />
-                  $ {c.price} ea.
+              $ {c.price} ea.
             </div>
           );
         })
@@ -106,11 +108,12 @@ class Cart extends Component {
         {displayItems}
         <header>
           {" "}
-          <h2 className = 'price'>Total Price: $ {total.toFixed(2)}</h2>
-          <StripeCheckout className = 'prices'
+          <h2 className="price">Total Price: $ {total.toFixed(2)}</h2>
+          <StripeCheckout
+            className="prices"
             token={this.onToken}
             stripeKey={process.env.REACT_APP_STRIPE_PUBLIC_KEY}
-            amount={this.props.amount}
+            amount={total * 100}
           />
           {/* <a href={process.env.REACT_APP_LOGOUT}><button>Log out</button></a> */}
         </header>

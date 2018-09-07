@@ -40,6 +40,7 @@ class BackpackDetails extends Component {
     this.setState({
       toggle: !this.state.toggle
     })
+    console.log(this.props.match.params);    
   }
 
 
@@ -61,7 +62,7 @@ class BackpackDetails extends Component {
       <div className = 'SimpleSlider pack-details'>
         <Navbar/>
         <ToastContainer position = 'bottom-right' />
-        <div className = 'cartbtn'>
+        {/* <div className = 'cartbtn'>
              <a>
              <button className="backpackorder" onClick={() => {
                  this.addToCart(); this.notify();
@@ -69,7 +70,7 @@ class BackpackDetails extends Component {
                ADD ME TO CART!
              </button>
            </a>
-        </div>
+        </div> */}
         <div className = 'packtitle'>{this.state.backpack.product_name}</div>
         <Slider {...settings}>
           <a>
@@ -83,6 +84,25 @@ class BackpackDetails extends Component {
           </a>
         </Slider>
         <div className="backdescription">{this.state.backpack.description}</div>
+
+        {this.state.toggle ? (
+    <a href={process.env.REACT_APP_LOGIN}>
+      <button> Login </button>
+    </a>
+  ) : null}
+  <div className="cart">
+    <a>
+      <button
+        className="backpackorder"
+        onClick={() => {
+          this.addToCart(); this.notify();
+        }}
+      >
+        {" "}
+        add to cart
+      </button>
+    </a>
+  </div>
 
         <style>
           @import url('https://fonts.googleapis.com/css?family=Raleway');
@@ -113,9 +133,9 @@ class BackpackDetails extends Component {
   // <div className="cart">
   //   <a>
   //     <button
-  //       className="btn"
+  //       className="backpackorder"
   //       onClick={() => {
-  //         this.addToCart();
+  //         this.addToCart(); this.notify();
   //       }}
   //     >
   //       {" "}
@@ -123,3 +143,4 @@ class BackpackDetails extends Component {
   //     </button>
   //   </a>
   // </div>
+

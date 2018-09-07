@@ -44,6 +44,7 @@ class TentDetails extends Component {
       toggle: !this.state.toggle
     });
     console.log("asdf");
+    console.log(this.props.match.params.id);
   }
 
   render() {

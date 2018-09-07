@@ -13,17 +13,18 @@ class Tent extends Component {
 
   render() {
     let tentsToDisplay = this.props.tent.map((tent, index) => {
-      return (
+      return (<div>
+        <Link to={`/tent/${tent.id}`}>
         <div key={index} className="tentorder">
           <div className = 'minititle'>{tent.product_name}</div>
-          <Link to={`/tent/${tent.id}`}>
             <button className = 'littlepic'>
               <img src={tent.img}  alt="" />
             </button>
-          </Link>
           <div className = 'minititle'>$ {tent.price}</div>
           {/* <div>{tent.rating}</div> */}
         </div>
+        </Link>
+      </div>        
       );
     });
     return (

@@ -8,35 +8,33 @@ import './Navbar.css';
                 <div className='Apps'>
                 <div className = 'headerstuff'>
                 <div className = 'topnav'>
-                <a>
                 <Link to={'/'}>
                 <button className = 'button button1'>Home</button></Link>
-                </a>
-                <a>
+                
                 <Link  to={`/tents`}>
                 <button className='button button2'>Tents</button>
                 </Link>
-                </a>
-                <a>
+                
+                
                 <Link to={'/sleepybags'}>
                 <button className='button button3'>Sleeping Bags</button>
                 </Link>
-                </a>
-                <a>
+                
+                
                 <Link to={'/backpacks'}>
                 <button className='button button4'>Backpacks</button>
                 </Link>
-                </a>
-                <a>
+                
+                
                 <Link to={'/shoes'}>
                 <button className='button button5'>Shoes</button>
                 </Link>
-                </a>
-                <a>
+                
+                
                 <Link to={'/cart'}>
                 <button className='button button6'>Cart</button>
                 </Link>
-                </a>
+                
 
                 </div>
 

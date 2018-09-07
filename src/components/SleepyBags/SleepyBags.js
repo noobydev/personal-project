@@ -18,14 +18,17 @@ class SleepyBag extends Component {
         // console.log(this.props)
         let sleepybagToDisplay = this.props.sleeping_bag.map((sleeping_bag, index) => {
             return (
+                <div>
+
+                <Link to = {`/sleepybag/${sleeping_bag.id}`}>
                 <div key = {index} className = 'sleepyorder'>
                     <div className = 'minititle'>{sleeping_bag.product_name}</div>
-                    <Link to = {`/sleepybag/${sleeping_bag.id}`}>
                     <button className = 'littlepic'>
                         <img src={sleeping_bag.img} alt=""/>
                     </button>
-                    </Link>
                     <div className = 'minititle'>$ {sleeping_bag.price}</div>
+                </div>
+                </Link>
                 </div>
             )
         })

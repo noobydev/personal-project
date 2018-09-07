@@ -16,14 +16,16 @@ class Shoes extends Component {
     render() {
         let shoesToDisplay = this.props.shoes.map((shoes, i) => {
             return (
+                <div>
+                <Link to = {`/shoe/${shoes.id}`}>
                 <div key = {i} className="shoeorder">
                     <div className = 'minititle'>{shoes.product_name}</div>
-                    <Link to = {`/shoe/${shoes.id}`}>
                         <button className = 'littlepic'>
                             <img src={shoes.img} alt=""/>
                         </button>
-                    </Link>
                     <div className = 'minititle'>$ {shoes.price}</div>
+                </div>
+                </Link>
                 </div>
             )
         })
